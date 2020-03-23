@@ -10,6 +10,8 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <a href='itms-services://?action=download-manifest&amp;url=https://closecrisis.com/close.plist
+          '>Littol link</a>
         <a
           className="App-link"
           href="https://reactjs.org"

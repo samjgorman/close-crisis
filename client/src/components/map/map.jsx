@@ -1,79 +1,68 @@
 import React from 'react';
-import axios from 'axios';
-
+import MapGL from 'react-map-gl';
 
 class Map extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      currentCounty: null, 
-      currentNumCases: null, 
-      currentNumDeceased: null,
-      newCasesToday: null, 
-      newDeathsToday: null
-    }
+        county: null,
+        latitude: 45.42, 
+        longitude: -75.69, 
+        width: "50vw", 
+        height: "100%", 
+        zoom: 10
+    };
+
   }
 
   componentDidMount() {
-    /**
-     * Replace this with a GET request once endpoint is written. 
-     */
     this.setState({
-      currentCounty: "Los Angeles County", 
-      currentNumCases: 0, 
-      currentNumDeceased: 0,
-      newCasesToday: 0, 
-      newDeathsToday: 0
+        county: this.props.county
     })
+  }
 
+  
+  setViewport(viewport) {
+    this.setState({
+        latitude: viewport.latitude, 
+        longitude: viewport.longitude, 
+        width: viewport.width,
+        height: viewport.height,
+        zoom: viewport.zoom
+    })
+  }
+
+  getViewport() {
+    return {
+        latitude: this.state.latitude, 
+        longitude: this.state.longitude, 
+        width: this.state.width,
+        height: this.state.height,
+        zoom: this.state.zoom
+    }
   }
 
   render() {
-    /**
-     * 
-     */
+
+    let mapbox_token = "pk.eyJ1Ijoic2hhbGludnMiLCJhIjoiY2s4ZnNtZHhlMDd0NzNrcGU4eHJnYXgyOCJ9.qv2ft9xqJ32Ovea3vDq3Yg";
+    let viewport = this.getViewport();
     return (
-      <div className="County-info">
-          <div className="Statistics-view">
-            <div className="Displaying">
-              Displaying 
-              <div className="County">
-                {this.state.currentCounty}
-              </div>
-            </div>
+        <MapGL 
+            {...viewport} 
+            mapboxApiAccessToken={mapbox_token} 
+            onViewportChange={(viewport) => { this.setViewport(viewport)}}
+        >
 
-            <div className="COVID-19-changes-in-your-area">
-              COVID-19 changes in your area
-
-              <div className="row">
-                  <div className="col">
-                    <div className="Confirmed">
-                        dd
-                    </div>
-                  </div>
-               
-              </div>
-
-
-            </div>
-
-
-            <div className="Showing-Department-of-Public-Health-data">
-              Showing Department of Public Health data
-            </div>
-            
-          </div>
-
-          
-
-          <div className="News-feed">
-     
-          </div>
-      </div>
-    )
-
+        </MapGL>
+    );
   }
+    
 }
+
+  
+  
+  
 
 
 

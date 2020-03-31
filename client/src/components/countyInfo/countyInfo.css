@@ -4,12 +4,19 @@
     padding-top: 51px;
     padding-left: 10%;
     padding-right: 50%;
+    
+}
+
+.County-info {
+    height: 100%;
+    background-color: black;
+
 }
 
 .Displaying {
     width: 288px;
     height: 44px;
-    font-family: Montserrat;
+    font-family: sans-serif;
     font-size: 16px;
     font-weight: normal;
     font-stretch: normal;
@@ -22,7 +29,7 @@
 .County {
     width: 398px;
     height: 50px;
-    font-family: DMSerifDisplay;
+    font-family: sans-serif;
     font-size: 36px;
     font-weight: normal;
     font-stretch: normal;
@@ -36,7 +43,7 @@
   .COVID-19-changes-in-your-area {
     width: 288px;
     height: 44px;
-    font-family: DMSans;
+    font-family: sans-serif;
     font-size: 16px;
     font-weight: normal;
     font-stretch: normal;
@@ -45,12 +52,14 @@
     letter-spacing: normal;
     color: #717171;
     padding-top: 24px;
+    padding-bottom: 40px;
+    margin-bottom: 50px;
   }
 
   .Confirmed-number {
     width: 74px;
     height: 59px;
-    font-family: DMSans;
+    font-family: sans-serif;
     font-size: 48px;
     font-weight: normal;
     font-stretch: normal;
@@ -63,7 +72,7 @@
   .Confirmed {
     width: 284px;
     height: 27.7px;
-    font-family: DMSans;
+    font-family: sans-serif;
     font-size: 16px;
     font-weight: normal;
     font-stretch: normal;
@@ -79,7 +88,7 @@
   .Deceased-number {
     width: 74px;
     height: 59px;
-    font-family: DMSans;
+    font-family: sans-serif;
     font-size: 48px;
     font-weight: normal;
     font-stretch: normal;
@@ -92,7 +101,7 @@
   .Deceased {
     width: 284px;
     height: 27.7px;
-    font-family: DMSans;
+    font-family: sans-serif;
     font-size: 16px;
     font-weight: normal;
     font-stretch: normal;
@@ -107,7 +116,7 @@
   .Showing-Department-of-Public-Health-data {
     width: 375px;
     height: 28px;
-    font-family: DMSans;
+    font-family: sans-serif;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
@@ -115,14 +124,14 @@
     line-height: normal;
     letter-spacing: normal;
     color: #717171;
+    margin-top: 10px;
   }
 
 
   .-today {
     width: 98px;
     height: 43px;
-    background-color: #ffa700;
-    font-family: DMSans;
+    font-family: sans-serif;
     font-size: 18px;
     font-weight: normal;
     font-stretch: normal;
@@ -133,6 +142,120 @@
   }
 
   .News-feed {
-      height: 100%;
-      background-color: #121212;
+    background-color: #121212;
+    height: 100vh;
+    overflow-y: scroll;
+    padding-left: 10%;
+    padding-right: 50%;
+  }
+
+  .Local-updates-for-Los-Angeles-Orange-County {
+    width: 395px;
+    height: 44px;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #717171;
+    margin-top: 20px;
+  }
+
+  .Timestamp {
+    width: 288px;
+    height: 20px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffa700;
+  }
+
+  .Title {
+    width: 426px;
+    height: 90px;
+    font-family: sans-serif;
+    font-size: 21px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .Sourcename {
+    width: 307px;
+    height: 44px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #717171;
+  
+  }
+
+  .Stats {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      font-family: sans-serif;
+
+  }
+
+  .CurrentNumbers {
+    flex-grow: 1;
+    width: 284px;
+    height: 43px;
+    font-family: sans-serif;
+    font-size: 48px;
+    color: #ffffff;
+  }
+
+  .Column {
+    display: flex;
+    flex-direction: column;
+ 
+  }
+
+  .Labels {
+    width: 284px;
+    height: 27.7px;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #717171;
+    display: inline-block;
+    padding-top: 10px;
+  }
+
+  .Increased {
+    width: 284px;
+    height: 27.7px;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #717171;
+  }
+
+  ion-icon {
+    font-size: 10px;
+    padding-bottom: 3px;
   }

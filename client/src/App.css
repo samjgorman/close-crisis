@@ -8,6 +8,19 @@
 
 }
 
+.App-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.County-info {
+  
+}
+
+.Map {
+
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

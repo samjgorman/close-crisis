@@ -1,0 +1,138 @@
+.Statistics-view {
+    
+    background-color: #151515;
+    padding-top: 51px;
+    padding-left: 10%;
+    padding-right: 50%;
+}
+
+.Displaying {
+    width: 288px;
+    height: 44px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #717171;
+}
+
+.County {
+    width: 398px;
+    height: 50px;
+    font-family: DMSerifDisplay;
+    font-size: 36px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    color: #ffffff;
+
+  }
+
+  .COVID-19-changes-in-your-area {
+    width: 288px;
+    height: 44px;
+    font-family: DMSans;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #717171;
+    padding-top: 24px;
+  }
+
+  .Confirmed-number {
+    width: 74px;
+    height: 59px;
+    font-family: DMSans;
+    font-size: 48px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+  }
+
+  .Confirmed {
+    width: 284px;
+    height: 27.7px;
+    font-family: DMSans;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #717171;
+    text-align: left;
+
+  
+  }
+
+  .Deceased-number {
+    width: 74px;
+    height: 59px;
+    font-family: DMSans;
+    font-size: 48px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+  }
+
+  .Deceased {
+    width: 284px;
+    height: 27.7px;
+    font-family: DMSans;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #717171;  
+    text-align: left;
+  }
+
+
+  .Showing-Department-of-Public-Health-data {
+    width: 375px;
+    height: 28px;
+    font-family: DMSans;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #717171;
+  }
+
+
+  .-today {
+    width: 98px;
+    height: 43px;
+    background-color: #ffa700;
+    font-family: DMSans;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffa700;
+  }
+
+  .News-feed {
+      height: 100%;
+      background-color: #121212;
+  }

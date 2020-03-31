@@ -1,0 +1,24 @@
+.header {
+    background-color: #27292d;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
+}
+
+.logo-pic {
+    width: 48px;
+    height: 58.7px;
+}
+
+.logo-title {
+    font-family: DMSerifDisplay;
+    font-size: 24px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    color: #ffffff;
+
+}

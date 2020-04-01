@@ -14,6 +14,7 @@ class Map extends React.Component {
         width: "50vw",
         height: "100vh",
         zoom: 10,
+        minZoom: 5,
         cases_layer: null, 
         interactiveLayerIds: null, 
         all_county_info: null
@@ -27,10 +28,32 @@ class Map extends React.Component {
   }
   
   setViewport(viewport) {
+    let max_latitude = 42;
+    let min_latitude = 32.52;
+    let min_longitude = -124.6;
+    let max_longitude = -114.05;
+
+    /**
+     * the 4 if statements below restrict panning
+     * react-mapbox-gl doesn't seem to have the maxBounds prop, 
+     * so had to custom implement
+     */
+    if(viewport.latitude > max_latitude) {
+        viewport.latitude = max_latitude;
+    }
+    if(viewport.latitude < min_latitude) {
+        viewport.latitude = min_latitude;
+    }
+    if(viewport.longitude > max_longitude) {
+        viewport.longitude = max_longitude;
+    }
+    if(viewport.longitude < min_longitude) {
+        viewport.longitude = min_longitude;
+    }
+
     this.setState({
         latitude: viewport.latitude, 
         longitude: viewport.longitude, 
-
         zoom: viewport.zoom
     })
   }
@@ -41,7 +64,8 @@ class Map extends React.Component {
         longitude: this.state.longitude, 
         width: this.state.width,
         height: this.state.height,
-        zoom: this.state.zoom
+        zoom: this.state.zoom,
+        minZoom: this.state.minZoom
     }
   }
 

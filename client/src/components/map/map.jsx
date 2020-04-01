@@ -43,7 +43,7 @@ class Map extends React.Component {
     }
   }
 
-  makeSource(county, latitude, longitude, cases) {
+  makeSource(county, latitude, longitude, severity) {
     let source_properties = {
         id: county, 
         type: 'geojson', 
@@ -62,18 +62,18 @@ class Map extends React.Component {
     }
     return (
         <Source key={county} {...source_properties}>
-            {this.makeLayer(county, cases)}
+            {this.makeLayer(county, severity)}
         </Source>
     )
   }
 
-  makeLayer(county, cases) {
+  makeLayer(county, severity) {
 
     let layer_properties = {
         id: county, 
         type: "circle", 
         paint: {
-            'circle-radius': cases/75, 
+            'circle-radius': severity*2, 
             'circle-color': '#ffa700', 
             'circle-opacity': 0.3, 
             'circle-stroke-width': 1, 
@@ -95,7 +95,7 @@ class Map extends React.Component {
             let counties = [];
             for(let i = 0; i < response.data.items.length; ++i) {
                 let county_info = response.data.items[i];
-                let circle = this.makeSource(county_info.county, county_info.lat, county_info.lon, county_info.cases);
+                let circle = this.makeSource(county_info.county, county_info.lat, county_info.lon, county_info.severity);
                 build_cases_layer.push(circle);
                 counties.push(county_info.county);
             }

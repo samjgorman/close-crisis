@@ -58,11 +58,11 @@ class CountyInfo extends React.Component {
     ).map(
       function(article) {
         return (
-          <div>
+          <div className="Article-element"> 
             <div className="Timestamp">
               {article.mins_ago}
             </div>
-            <div>
+            <div className="Title">
               <a href={article.article_url} className="Title">
                 {article.article_title}
               </a>
@@ -117,7 +117,7 @@ class CountyInfo extends React.Component {
                     Deceased
                   </div>
                   <div className="-today">
-                    <ion-icon name="arrow-up-outline"></ion-icon> {this.state.new_deaths} today
+                    <ion-icon name="arrow-up-outline"></ion-icon>{this.state.new_deaths} today
                   </div>
 
                   
@@ -136,9 +136,6 @@ class CountyInfo extends React.Component {
             </div>
             
           </div>
-
-          
-
           <div className="News-feed">
             <div className="Local-updates-for-Los-Angeles-Orange-County">
               Local updates for {this.state.county}

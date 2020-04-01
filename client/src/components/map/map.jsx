@@ -9,7 +9,7 @@ class Map extends React.Component {
         selected_county: null,
         latitude: 34.196398, //default for LA
         longitude: -118.261862, //default for LA
-        width: "50vh",
+        width: "50vw",
         height: "100vh",
         zoom: 10,
         cases_layer: null, 
@@ -20,11 +20,7 @@ class Map extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-        width: "50vw",
-        height: "100vh",
-        zoom: 10,
-    });
+
     this.updateCasesLayer();
   }
   
@@ -32,8 +28,7 @@ class Map extends React.Component {
     this.setState({
         latitude: viewport.latitude, 
         longitude: viewport.longitude, 
-        width: viewport.width,
-        height: viewport.height,
+
         zoom: viewport.zoom
     })
   }
@@ -118,8 +113,8 @@ class Map extends React.Component {
   }
 
   onClickCounty(event) {
+    event.preventDefault();
     let feature = event.features[0];
-
     console.log(event)
     if(feature === undefined || feature.source === undefined) {
         this.setState({
@@ -143,7 +138,7 @@ class Map extends React.Component {
     let viewport = this.getViewport();
 
 
-    //copied from github
+    //vvv copied from github
     const geolocateStyle = {
         position: 'absolute',
         top: 0,
@@ -157,6 +152,7 @@ class Map extends React.Component {
         left: 0,
         padding: '10px'
       };
+    //^^^ copied from github
 
     return (
         <MapGL 

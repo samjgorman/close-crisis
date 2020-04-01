@@ -1,6 +1,8 @@
 import React from 'react';
 import MapGL, {Source, Layer, Popup, GeolocateControl, NavigationControl} from 'react-map-gl';
 import axios from 'axios';
+import boundary_data from './ca_boundaries.json';
+
 class Map extends React.Component {
   constructor(props) {
     super(props);
@@ -88,6 +90,33 @@ class Map extends React.Component {
     )
   }
   
+
+  makeCountyBoundaries() {
+      let source_properties = {
+        id: 'california',
+        type: 'geojson',
+        data: boundary_data
+      }
+
+      let layer_properties = {
+        'id': 'california',
+        'type': 'line',
+        'source': 'california',
+        'layout': {},
+        'paint': {
+            'line-color': '#414141'
+        }
+      }
+    
+      return (
+        <Source id='california' key='california' {...source_properties} >
+            <Layer {...layer_properties} />
+        </Source>
+      );
+      
+      
+      
+  }
   updateCasesLayer() {
       axios.get("https://us-central1-iris-263608.cloudfunctions.net/close_ca_map_all").then(
           (response) => {
@@ -175,8 +204,6 @@ class Map extends React.Component {
                 ) : null
             }
 
-
-
             <GeolocateControl
                 style={geolocateStyle}
                 positionOptions={{enableHighAccuracy: true}}
@@ -185,6 +212,8 @@ class Map extends React.Component {
             <div style={navStyle}>
                 <NavigationControl />
             </div>
+
+            {this.makeCountyBoundaries()}
 
         </MapGL>
     );

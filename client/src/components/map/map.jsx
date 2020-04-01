@@ -99,7 +99,7 @@ class Map extends React.Component {
         id: county, 
         type: "circle", 
         paint: {
-            'circle-radius': severity*2, 
+            'circle-radius': severity*5, 
             'circle-color': '#ffa700', 
             'circle-opacity': 0.3, 
             'circle-stroke-width': 1, 
@@ -184,7 +184,19 @@ class Map extends React.Component {
 
  
   makePopup(county, latitude, longitude) {
-
+    return (
+        <Popup 
+            latitude={latitude} 
+            longitude={longitude}
+            closeOnClick={true}
+            onClose={() => this.setState({selected_county: null})}
+        >
+            {/**
+            * Your code here Sam
+            */
+            }
+        </Popup>
+    )
   }
   render() {
     let mapbox_token = "pk.eyJ1Ijoic2hhbGludnMiLCJhIjoiY2s4ZnNtZHhlMDd0NzNrcGU4eHJnYXgyOCJ9.qv2ft9xqJ32Ovea3vDq3Yg";

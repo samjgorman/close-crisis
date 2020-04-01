@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/header/header.jsx';
 import CountyInfo from './components/countyInfo/countyInfo.jsx';
 import Map from './components/map/map.jsx';
-
+import MobileNav from './components/mobileNav/mobileNav.jsx';
 
 
 class App extends React.Component {
@@ -11,7 +11,16 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      county: "Los Angeles County" //default county
+      county: "Los Angeles County", //default county
+      active_mobile_component: "news" //by default, otherwise "map"
+    };
+
+    this.changeActiveMobileComponent = (icon_name) => {
+      this.setState(
+        {
+          active_mobile_component: icon_name
+        }
+      );
     };
 
     this.mapOnClick = (selected_county) => {
@@ -25,6 +34,7 @@ class App extends React.Component {
     return (
       <div>
         <Header ></Header>
+        <MobileNav changeActiveMobileComponent={this.changeActiveMobileComponent} />
         <div className="App-container">
           <div className="County-info">
             <CountyInfo county={this.state.county} />

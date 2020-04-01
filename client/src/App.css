@@ -2,10 +2,6 @@
   text-align: center;
   background-color: #121212;
   color: white;
-  padding-left: 16vw;
-  padding-right: 16vw;
-
-
 }
 
 .App-container {
@@ -14,11 +10,15 @@
   flex-wrap: nowrap;
 }
 .County-info {
-  
+  height: 50%;
+  width: 50%;
+  flex-grow: 1;
 }
 
 .Map {
-
+  height: 100%;
+  width: 50%;
+  flex-grow: 1;
 }
 
 .App-logo {

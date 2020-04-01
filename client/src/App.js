@@ -11,12 +11,12 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      county: "Orange County" //default county
+      county: "Los Angeles County" //default county
     };
 
-    this.mapOnClick = (clicked_county) => {
+    this.mapOnClick = (selected_county) => {
       this.setState({
-        county: clicked_county
+        county: selected_county
       });
     };
   }
@@ -26,11 +26,11 @@ class App extends React.Component {
       <div>
         <Header ></Header>
         <div className="App-container">
-          <div>           
+          <div className="County-info">
             <CountyInfo county={this.state.county} />
           </div>
-          <div>
-            <Map county={this.state.county} />
+          <div className="Map">
+            <Map county={this.state.county} mapOnClick={this.mapOnClick}/>
           </div>
         </div>
       </div>

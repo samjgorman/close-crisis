@@ -1,4 +1,5 @@
 import React from 'react';
+import { HashLink } from 'react-router-hash-link';
 import './mobileNav.css';
 
 class MobileNav extends React.Component {
@@ -50,8 +51,9 @@ class MobileNav extends React.Component {
         </div>
         <div className="ion-icon-container">
             <div>
-                <button className="button"> 
-                    <ion-icon onClick={() => {this.onMapClick()}} style={{color: this.getIconColor("map")}} name="map-outline"></ion-icon>
+                
+                <button onClick={() => {this.onMapClick()}} className="button"> 
+                    <ion-icon style={{color: this.getIconColor("map")}} name="map-outline"></ion-icon>
                 </button>
             </div>
             <div className="Mobile-nav-labels">

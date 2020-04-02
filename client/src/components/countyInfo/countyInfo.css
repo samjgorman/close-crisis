@@ -2,15 +2,16 @@
     
     background-color: #151515;
     padding-left: 10%;
-    height: 35vh;
-    overflow-y: scroll;
+    padding-right: 10%;
+    /* overflow-y: scroll; */
     
 }
 
 .County-info {
+    background-color: #121212;
     width: 50vw;
-    background-color: black;
     height: 100vh;
+    overflow-y: scroll;
 }
 
 .Displaying {
@@ -68,6 +69,7 @@
     font-family: sans-serif;
     font-size: 14px;
     color: #717171;
+    padding-bottom: 10px;
   }
 
 
@@ -83,8 +85,8 @@
   .News-feed {
     background-color: #121212;
     height: 65vh;
-    overflow-y: scroll;
-    width: 50vw
+    /* overflow-y: scroll; */
+    width: 100%
   }
 
 
@@ -145,8 +147,10 @@
     color: #717171;
   }
 
-  ion-icon {
+  #Arrow-icon {
     font-size: 10px;
+    height: 10px;
+    width: 10px;
     padding-bottom: 3px;
   }
 
@@ -167,3 +171,4 @@
       padding-top: 10px;
       padding-bottom: 10px;
   }
+

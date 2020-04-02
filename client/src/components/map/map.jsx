@@ -1,17 +1,18 @@
 import React from 'react';
-import MapGL, {Source, Layer, Popup, GeolocateControl, NavigationControl} from 'react-map-gl';
+import MapGL, {Source, Layer, Popup, GeolocateControl, NavigationControl, FlyToInterpolator } from 'react-map-gl';
 import axios from 'axios';
 import boundary_data from './ca_boundaries.json';
+import { Link } from 'react-router-dom';
 
 class Map extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-        selected_county: null,
-        latitude: 34.196398, //default for LA
-        longitude: -118.261862, //default for LA
-        width: "50vw",
+        selected_county: this.props.selected_county,
+        latitude: this.props.latitude, //default for LA
+        longitude: this.props.longitude, //default for LA
+        width: "100%",
         height: "100vh",
         zoom: 10,
         minZoom: 5,
@@ -23,8 +24,19 @@ class Map extends React.Component {
   }
 
   componentDidMount() {
-
     this.updateCasesLayer();
+  }
+
+  componentDidUpdate(prev_props) {
+      if(prev_props !== this.props) {
+        this.setState({
+            selected_county: this.props.selected_county, 
+            latitude: this.props.latitude, 
+            longitude: this.props.longitude,
+            transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
+            transitionDuration: 'auto', 
+        })
+      }
   }
   
   setViewport(viewport) {
@@ -54,7 +66,9 @@ class Map extends React.Component {
     this.setState({
         latitude: viewport.latitude, 
         longitude: viewport.longitude, 
-        zoom: viewport.zoom
+        zoom: viewport.zoom, 
+        transitionInterpolator: null,
+        transitionDuration: null
     })
   }
 
@@ -65,7 +79,9 @@ class Map extends React.Component {
         width: this.state.width,
         height: this.state.height,
         zoom: this.state.zoom,
-        minZoom: this.state.minZoom
+        minZoom: this.state.minZoom, 
+        transitionInterpolator: this.state.transitionInterpolator,
+        transitionDuration: this.state.transitionDuration
     }
   }
 
@@ -99,7 +115,7 @@ class Map extends React.Component {
         id: county, 
         type: "circle", 
         paint: {
-            'circle-radius': severity*5, 
+            'circle-radius': severity, 
             'circle-color': '#ffa700', 
             'circle-opacity': 0.3, 
             'circle-stroke-width': 1, 
@@ -177,9 +193,15 @@ class Map extends React.Component {
     }
     
     this.setState({
-        selected_county: feature
+        selected_county: feature, 
+        latitude: feature.geometry.coordinates[1], 
+        longitude: feature.geometry.coordinates[0], 
+        transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
+        transitionDuration: 'auto', 
+        zoom: 7
+
     })
-    this.props.mapOnClick(feature.source);
+    this.props.mapOnClick(feature.source, feature.geometry.coordinates[0], feature.geometry.coordinates[1]);
   }
 
  
@@ -220,38 +242,42 @@ class Map extends React.Component {
     //^^^ copied from github
 
     return (
-        <MapGL 
-            {...viewport} 
-            mapboxApiAccessToken={mapbox_token} 
-            onViewportChange={(viewport) => { this.setViewport(viewport)}}
-            interactiveLayerIds={this.state.interactiveLayerIds}
-            onClick={(event) => {this.onClickCounty(event)}}
-        >
-            {this.state.cases_layer}
 
-            {this.state.selected_county ? 
-                (
-                    <Popup 
-                        latitude={this.state.selected_county.geometry.coordinates[1]} 
-                        longitude={this.state.selected_county.geometry.coordinates[0]}
-                        closeOnClick={true}
-                        onClose={() => this.setState({selected_county: null})}
-                    />
-                ) : null
-            }
+        <div className="Map-container">
+            <MapGL 
+                {...viewport} 
+                mapboxApiAccessToken={mapbox_token} 
+                onViewportChange={(viewport) => { this.setViewport(viewport)}}
+                interactiveLayerIds={this.state.interactiveLayerIds}
+                onClick={(event) => {this.onClickCounty(event)}}
+            >
+                {this.state.cases_layer}
 
-            <GeolocateControl
-                style={geolocateStyle}
-                positionOptions={{enableHighAccuracy: true}}
-                trackUserLocation={true}
-            />
-            <div style={navStyle}>
-                <NavigationControl />
-            </div>
+                {/* {this.state.selected_county ? 
+                    (
+                        <Popup 
+                            latitude={this.state.selected_county.geometry.coordinates[1]} 
+                            longitude={this.state.selected_county.geometry.coordinates[0]}
+                            closeOnClick={true}
+                            onClose={() => this.setState({selected_county: null})}
+                        />
+                    ) : null
+                } */}
 
-            {this.makeCountyBoundaries()}
+                <GeolocateControl
+                    style={geolocateStyle}
+                    positionOptions={{enableHighAccuracy: true}}
+                    trackUserLocation={true}
+                />
 
-        </MapGL>
+                <div style={navStyle}>
+                    <NavigationControl />
+                </div>
+
+                {this.makeCountyBoundaries()}
+
+            </MapGL>
+        </div>
     );
   }
     

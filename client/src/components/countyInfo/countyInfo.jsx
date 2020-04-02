@@ -20,6 +20,11 @@ class CountyInfo extends React.Component {
     axios.get(endpoint).then(
       (response) => {
         console.log(response);
+
+        //index 1 means newly rendered component
+        //scroll to top on update
+        document.getElementsByClassName('County-info')[1].scrollTo(0, 0) 
+
         this.setState({
           county: response.data.county, 
           cases: response.data.cases, 
@@ -34,18 +39,24 @@ class CountyInfo extends React.Component {
         console.log(err);
       }
     );
+    
   }
   
   componentDidMount() {
     /*
       replace with default county
     */
+
     this.updateCountyInfo(this.props.county);
 
   }
 
   componentDidUpdate(prev_props) {
     if(prev_props.county !== this.props.county) {
+      // let county = "Los Angelas County"; //default
+      // if(this.props.match.params !== undefined) {
+      //   county = this.props.match.params.county;
+      // }
       this.updateCountyInfo(this.props.county);
     }
   }
@@ -105,7 +116,7 @@ class CountyInfo extends React.Component {
                   </div>
 
                   <div className="-today">
-                    <ion-icon name="arrow-up-outline"></ion-icon> {this.state.new_cases} today
+                    <ion-icon id="Arrow-icon" name="arrow-up-outline"></ion-icon>{this.state.new_cases} today
                   </div>
                 </div>
 
@@ -117,7 +128,7 @@ class CountyInfo extends React.Component {
                     Deceased
                   </div>
                   <div className="-today">
-                    <ion-icon name="arrow-up-outline"></ion-icon>{this.state.new_deaths} today
+                    <ion-icon  id="Arrow-icon" name="arrow-up-outline"></ion-icon>{this.state.new_deaths} today
                   </div>
 
                   

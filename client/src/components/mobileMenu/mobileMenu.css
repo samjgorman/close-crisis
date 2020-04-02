@@ -1,0 +1,68 @@
+.List-element {
+    padding-left: 5%; 
+
+}
+
+#Select-box {
+    padding-top: 0px;
+    text-align: left !important;
+}
+
+.County-name {
+    padding-left: 10px;
+}
+
+
+.Select-button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-size: 16px;
+    color: #ffffff;
+    padding-left: 0%;
+}
+
+.Back-button {
+    background-color: Transparent;
+
+    border: none;
+    cursor:pointer;
+    outline:none;
+    font-family: Merriweather;
+    font-size: 20px;
+    color: #ffffff;
+    margin-left: 4%;
+
+}
+
+.Back-header {
+    background-color: #27292d;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.Select-an-area {
+  
+    font-family: DMSerifDisplay;
+    font-size: 24px;
+    padding-left: 5%;
+    color: #ffffff;
+  }
+
+.Selection-list {
+    padding-top: 10px;
+    background-color: #121212;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.Button-container {
+    display: flex;
+    align-items: center;
+
+}
+

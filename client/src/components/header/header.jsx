@@ -7,6 +7,11 @@ import "./header.css"
 
 
 class Header extends Component{
+    constructor(props) {
+        super(props);
+    }
+
+    
     render() {
         return (
             <div className="header">
@@ -14,6 +19,9 @@ class Header extends Component{
                 <span className="logo-title">
                     Close
                 </span>
+                <button onClick={() => {this.props.changeActiveMobileComponent("menu")}} className="Menu-button"> 
+                    <ion-icon id="Menu-icon" name="menu-outline"></ion-icon>
+                </button>
             </div>
 
         );

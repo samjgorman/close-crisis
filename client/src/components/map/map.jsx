@@ -33,6 +33,7 @@ class Map extends React.Component {
             selected_county: this.props.selected_county, 
             latitude: this.props.latitude, 
             longitude: this.props.longitude,
+            zoom: 7,
             transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
             transitionDuration: 'auto', 
         })

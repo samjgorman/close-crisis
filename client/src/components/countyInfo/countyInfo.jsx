@@ -1,5 +1,6 @@
 import React from 'react';
 import "./countyInfo.css";
+import StatisticsView from "../statisticsView/statisticsView.js"
 import axios from 'axios';
 
 class CountyInfo extends React.Component {
@@ -13,42 +14,21 @@ class CountyInfo extends React.Component {
       new_deaths: null, 
       articles: []
     };
+
+    this.updateArticlesInParent = (articles) => {
+      this.setState({
+        articles: articles
+      })
+    }
   }
 
-  updateCountyInfo(county) {
-    let endpoint = "https://us-central1-iris-263608.cloudfunctions.net/close_ca_regional_news?county=" + county; 
-    axios.get(endpoint).then(
-      (response) => {
-        console.log(response);
-
-        //index 1 means newly rendered component
-        //scroll to top on update
-        //document.getElementsByClassName('County-info')[1].scrollTo(0, 0) 
-
-        this.setState({
-          county: response.data.county, 
-          cases: response.data.cases, 
-          deaths: response.data.deaths, 
-          new_cases: response.data.new_cases, 
-          new_deaths: response.data.new_deaths, 
-          articles: response.data.articles
-        })
-      }
-    ).catch(
-      (err) => {
-        console.log(err);
-      }
-    );
-    
-  }
-  
   componentDidMount() {
     /*
       replace with default county
     */
-
-    this.updateCountyInfo(this.props.county);
-
+   this.setState({
+     county: this.props.county
+   })
   }
 
   componentDidUpdate(prev_props) {
@@ -57,12 +37,14 @@ class CountyInfo extends React.Component {
       // if(this.props.match.params !== undefined) {
       //   county = this.props.match.params.county;
       // }
-      this.updateCountyInfo(this.props.county);
+      this.setState({
+        county: this.props.county
+      })
     }
   }
 
   displayNewsFeed() {
-    return this.state.articles.sort( //sort the newsfeed articles by date, earliest to latest
+    return  this.state.articles.sort( //sort the newsfeed articles by date, earliest to latest
       function(article1, article2) {
         return new Date(article1.timestamp) - new Date(article2.timestamp);
       }
@@ -95,58 +77,11 @@ class CountyInfo extends React.Component {
      */
     return (
       <div className="County-info">
-          <div className="Statistics-view">
-            <div className="Displaying">
-              Displaying 
-              <div className="County">
-                {this.state.county}
-              </div>
-            </div>
-
-            <div className="COVID-19-changes-in-your-area">
-              COVID-19 changes in your area
-              <div className="Stats">
-
-                <div className="Column">
-                  <div className="CurrentNumbers">
-                    {this.state.cases}
-                  </div>
-                  <div className="Labels">
-                    Confirmed
-                  </div>
-
-                  <div className="-today">
-                    <ion-icon id="Arrow-icon" name="arrow-up-outline"></ion-icon>{this.state.new_cases} today
-                  </div>
-                </div>
-
-                <div className="Column">
-                  <div className="CurrentNumbers">
-                    {this.state.deaths}
-                  </div>
-                  <div className="Labels">
-                    Deceased
-                  </div>
-                  <div className="-today">
-                    <ion-icon  id="Arrow-icon" name="arrow-up-outline"></ion-icon>{this.state.new_deaths} today
-                  </div>
-
-                  
-                </div>
-
-
-
-       
-              </div>
-
-            </div>
-
-
-            <div className="Showing-Department-of-Public-Health-data">
-              Showing Department of Public Health data
-            </div>
-            
-          </div>
+          <StatisticsView 
+            county={this.state.county}
+            updateArticlesInParent={this.updateArticlesInParent}
+            endpoint="https://us-central1-iris-263608.cloudfunctions.net/close_ca_regional_news?county="
+          />
           <div className="News-feed">
             <div className="Local-updates-for-Los-Angeles-Orange-County">
               Local updates for {this.state.county}

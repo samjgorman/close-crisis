@@ -2,6 +2,8 @@ import React from 'react';
 import MapGL, {Source, Layer, Popup, GeolocateControl, NavigationControl, FlyToInterpolator } from 'react-map-gl';
 import axios from 'axios';
 import boundary_data from './ca_boundaries.json';
+import StatisticsView from '../statisticsView/statisticsView.js';
+import MediaQuery from 'react-media';
 import { Link } from 'react-router-dom';
 import './map.css';
 
@@ -14,31 +16,43 @@ class Map extends React.Component {
         latitude: this.props.latitude, //default for LA
         longitude: this.props.longitude, //default for LA
         width: "100%",
-        height: "100%",
+        height: "50em",
         zoom: 10,
         minZoom: 5,
         cases_layer: null, 
         interactiveLayerIds: null, 
-        all_county_info: null
+        all_county_info: null, 
+        cases: null,
+        deaths: null,
+        new_cases: null,
+        new_deaths: null
     };
 
   }
 
   componentDidMount() {
+
     this.updateCasesLayer();
+
+
   }
 
   componentDidUpdate(prev_props) {
-      if(prev_props !== this.props) {
+
+      if(prev_props.selected_county !== this.props.selected_county) {
+        // this.setState({
+        //     latitude: this.props.latitude, 
+        //     longitude: this.props.longitude,
+        //     zoom: 7,
+        //     transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
+        //     transitionDuration: 'auto', 
+        // });
+        //^^deprecated above camer operation
         this.setState({
-            selected_county: this.props.selected_county, 
-            latitude: this.props.latitude, 
-            longitude: this.props.longitude,
-            zoom: 7,
-            transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
-            transitionDuration: 'auto', 
+          selected_county: this.props.selected_county
         })
       }
+
   }
   
   setViewport(viewport) {
@@ -117,7 +131,7 @@ class Map extends React.Component {
         id: county, 
         type: "circle", 
         paint: {
-            'circle-radius': severity*2, 
+            'circle-radius': severity*3, 
             'circle-color': '#ffa700', 
             'circle-opacity': 0.3, 
             'circle-stroke-width': 1, 
@@ -159,7 +173,9 @@ class Map extends React.Component {
       
       
   }
+
   updateCasesLayer() {
+
       axios.get("https://us-central1-iris-263608.cloudfunctions.net/close_ca_map_all").then(
           (response) => {
             let build_cases_layer = [];
@@ -176,6 +192,7 @@ class Map extends React.Component {
                 interactiveLayerIds: counties
             })
           }
+          
       ).catch(
           (err) => {
               console.log(err);
@@ -187,31 +204,33 @@ class Map extends React.Component {
     event.preventDefault();
     let feature = event.features[0];
     if(feature === undefined || feature.source === undefined) {
-        this.setState({
-            selected_county: null
-        })
         return;
     }
-    
-    this.setState({
-        selected_county: feature.source, 
-        latitude: feature.geometry.coordinates[1], 
-        longitude: feature.geometry.coordinates[0], 
-        transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
-        transitionDuration: 'auto', 
-        zoom: 7
-
-    })
     this.props.mapOnClick(feature.source, feature.geometry.coordinates[0], feature.geometry.coordinates[1]);
+    return;
+    this.setState({
+        selected_county: feature.source,
+        // latitude: feature.geometry.coordinates[1], 
+        // longitude: feature.geometry.coordinates[0], 
+        // transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
+        // transitionDuration: 'auto', 
+        // zoom: 7
+        //deprecated the above camera pan animation
+
+    }, 
+    
+    () => {this.props.mapOnClick(feature.source, feature.geometry.coordinates[0], feature.geometry.coordinates[1])})
+
+    
   }
 
- 
+  
   makePopup(county, latitude, longitude) {
     return (
         <Popup 
             latitude={latitude} 
             longitude={longitude}
-            closeOnClick={true}
+            closeOnClick={false}
             onClose={() => this.setState({selected_county: null})}
         >
             {/**
@@ -221,6 +240,7 @@ class Map extends React.Component {
         </Popup>
     )
   }
+
   render() {
     let mapbox_token = "pk.eyJ1Ijoic2hhbGludnMiLCJhIjoiY2s4ZnNtZHhlMDd0NzNrcGU4eHJnYXgyOCJ9.qv2ft9xqJ32Ovea3vDq3Yg";
     let viewport = this.getViewport();
@@ -240,11 +260,31 @@ class Map extends React.Component {
         left: 0,
         padding: '10px'
       };
-    //^^^ copied from github
-
+    //^^^ copied from  github
+      //Todo: undelete statisticsView
     return (
 
         <div className="Map-container">
+          
+            <MediaQuery query="(max-width: 768px)">
+              {
+                (matches) => {
+                    return matches ?
+                      <div>
+                        <StatisticsView 
+                            county={this.state.selected_county}
+                            endpoint="https://us-central1-iris-263608.cloudfunctions.net/http_coronavirus?county="
+                        />
+                      </div>
+                      :
+                      null
+
+                }
+              }
+              </MediaQuery>
+         
+
+
             <MapGL 
                 {...viewport} 
                 mapboxApiAccessToken={mapbox_token} 
@@ -256,7 +296,7 @@ class Map extends React.Component {
             >
                 {this.state.cases_layer}
 
-                {this.state.selected_county ? 
+                {this.state.selected_county !== "No county chosen" && this.state.selected_county !== null ? 
                     (
                         <Popup 
                             latitude={this.props.latitude} 

@@ -2,18 +2,22 @@
   text-align: center;
   background-color: #121212;
   color: white;
+
 }
 
 .App-container {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+
 }
 
 
 .County-info-outer {
+  height: 50em;
   width: 50%;
   flex-grow: 1;
+
 }
 
 .Map {

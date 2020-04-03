@@ -3,6 +3,10 @@
 
 }
 
+.Mobile-menu-container {
+    width: 100%;
+    height: 100%;
+}
 #Select-box {
     padding-top: 0px;
     text-align: left !important;
@@ -25,25 +29,8 @@
     padding-left: 0%;
 }
 
-.Back-button {
-    background-color: Transparent;
 
-    border: none;
-    cursor:pointer;
-    outline:none;
-    font-family: Merriweather;
-    font-size: 20px;
-    color: #ffffff;
-    margin-left: 4%;
 
-}
-
-.Back-header {
-    background-color: #27292d;
-    height: 60px;
-    display: flex;
-    align-items: center;
-}
 
 .Select-an-area {
   
@@ -57,7 +44,6 @@
     padding-top: 10px;
     background-color: #121212;
     height: 100%;
-    overflow-y: scroll;
 }
 
 .Button-container {
@@ -67,3 +53,12 @@
 }
 
 
+@media only screen and (max-width: 768px) {
+    .Mobile-menu-container {
+   
+      position:fixed;
+      bottom: 60px;
+      top: 50px
+    
+    }
+  }

@@ -10,61 +10,41 @@ class MobileMenu extends Component{
         //TODO: get prop prev component 
         //TODO: get prop current county
         this.state = {
-            selected_county: null, 
-            counties: {},
-            prev_active_mobile_component: null
+            selected_county: "SF Bay Area", //by defualt on mount
+            counties: [
+                "San Diego Area", 
+                "SF Bay Area", 
+                "Fresno County", 
+                "Inland Empire",
+                "Sacremento, San Joaquin, Stanislaus",
+                "LA and Orange Counties",  
+                "Kern, Ventura, and Santa Barbara County"
+            ],
+            prev_active_mobile_component: this.props.prev_active_mobile_component
         }
         
     }
 
     componentDidMount() {
-        axios.get("https://us-central1-iris-263608.cloudfunctions.net/close_ca_map_all").then(
-            (response) => {
-                let build_counties = {};
-                for(let i = 0; i < response.data.items.length; ++i) {
-                    let county_info = response.data.items[i];
-                    build_counties[county_info.county] = {
-                        latitude: county_info.lat, 
-                        longitude: county_info.lon
-                    };
-                }
-         
-                this.setState({
-                    selected_county: this.props.selected_county,
-                    prev_active_mobile_component: this.props.prev_active_mobile_component,
-                    counties: build_counties
-                })
-            }
-        ).catch(
-            (err) => {
-                if(err) {
-                    console.log(err);
-                }
-            }
-        );
     }
 
     componentDidUpdate(prev_props) {
-        if(prev_props !== this.props) {
-            this.setState({
-                selected_county: this.props.selected_county,
-                prev_active_mobile_component: this.props.prev_active_mobile_component
-            })
-         
-        }
+   
     }
 
     onCountySelection(county) {
-        this.props.onCountySelection(county, this.state.counties[county].longitude, this.state.counties[county].latitude);
+        this.setState({
+            selected_county: county
+        })
+        this.props.onCountySelection(county);
     }
 
-    makeCountiesList(counties, selected_county) {
+    makeCountiesList(counties) {
         let build_list = [];
-        let county_names = Object.keys(counties).sort((c1, c2) => {return c1 > c2});
-        for(let i = 0; i < county_names.length; ++i) {
-            let county = county_names[i];
+        for(let i = 0; i < counties.length; ++i) {
+            let county = counties[i]
             build_list.push(
-                <div className="List-element">
+                <div key={county} className="List-element">
                     <button onClick={() => { this.onCountySelection(county) }} className="Select-button">
                         <div className="Button-container">
                                 <ion-icon 
@@ -72,15 +52,15 @@ class MobileMenu extends Component{
                                     name="stop"
                                     id="Select-box"
                                 />
-
                             <div className="County-name">
-                            {county}
+                                {county}
                             </div>
                         </div>
                     </button>
                 </div>
             )
         }
+       
         return build_list;
     }
 
@@ -92,23 +72,15 @@ class MobileMenu extends Component{
         }
     }
 
-    onBackClick() {
-        this.props.changeActiveMobileComponent(this.props.prev_active_mobile_component);
-    }
 
     render() {
         return (
-            <div>
-                <div className="Back-header">
-                    <button onClick={() => this.onBackClick()} className="Back-button">
-                        Back
-                    </button>
-                </div>
+            <div className="Mobile-menu-container">
                 <div className="Selection-list">
                     <div className="Select-an-area">
                         Select an area: 
                     </div>
-                    {this.makeCountiesList(this.state.counties, this.state.selected_county)}
+                    {this.makeCountiesList(this.state.counties)}
                 </div>
             </div>
 

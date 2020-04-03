@@ -17,25 +17,34 @@ class App extends React.Component {
       county: "Los Angeles County", //default county
       latitude: 34.196398, //default for LA
       longitude: -118.261862, //defualt for LA
-      active_mobile_component: "news" //by default, other possible values are "map"
+      active_mobile_component: "news", //by default, other possible values are "map", "menu"
+      prev_active_mobile_component: "news"
     };
 
+    
     this.changeActiveMobileComponent = (icon_name) => {
       console.log(icon_name);
       this.setState(
         {
+          prev_active_mobile_component: this.state.active_mobile_component,
           active_mobile_component: icon_name
         }
       );
     };
 
     this.onCountySelection = (selected_county, longitude, latitude) => {
-      console.log(selected_county);
+      console.log("map clicked" + selected_county);
       this.setState({
         county: selected_county,
-        latitude: latitude,
-        longitude: longitude
-      });
+      })
+
+      if(latitude !== undefined && longitude !== undefined) {
+        this.setState({
+          latitude: latitude,
+          longitude: longitude
+        });
+      }
+    
     };
 
   }
@@ -51,6 +60,7 @@ class App extends React.Component {
       style.width= "0%";
 
       if(component_name === "menu") {
+        style.width= "0%";
         style.height = "0%";
       }
     }
@@ -65,8 +75,11 @@ class App extends React.Component {
 
 
       <div>
-        <Header changeActiveMobileComponent={this.changeActiveMobileComponent}></Header>
-        
+        <Header 
+          changeActiveMobileComponent={this.changeActiveMobileComponent}
+          prev_active_mobile_component={this.state.prev_active_mobile_component}
+          active_mobile_component={this.state.active_mobile_component}
+        />
         <MediaQuery query="(max-width: 768px)">
           {
             (matches) => {

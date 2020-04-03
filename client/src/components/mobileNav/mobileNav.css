@@ -1,9 +1,11 @@
 .Mobile-nav-container {
+    position: fixed;
     display: flex;
     background-color: #1f2023;
     align-content: center;
     justify-content: center;
-    height: 10%;
+    bottom: 0px;
+    height: 60px;
 }
 
 .ion-icon-container {

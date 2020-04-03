@@ -1,9 +1,11 @@
 .header {
+
+    width: 95%;
     background-color: #27292d;
     display: flex;
     align-items: center;
     padding-left: 5%;
-    height: 10%;
+    height: 50px;
 }
 
 .logo-pic {
@@ -38,7 +40,13 @@
     overflow: hidden;
     outline:none;
     position: absolute;
-    padding: 10px;
+    padding: 4px;
     right: 0px;
     top: 0px;
 }
+
+@media only screen and (max-width: 768px) {
+    .header {
+        position: fixed;
+    }
+  }

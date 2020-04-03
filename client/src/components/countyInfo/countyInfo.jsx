@@ -23,7 +23,7 @@ class CountyInfo extends React.Component {
 
         //index 1 means newly rendered component
         //scroll to top on update
-        document.getElementsByClassName('County-info')[1].scrollTo(0, 0) 
+        //document.getElementsByClassName('County-info')[1].scrollTo(0, 0) 
 
         this.setState({
           county: response.data.county, 

@@ -3,6 +3,7 @@ import MapGL, {Source, Layer, Popup, GeolocateControl, NavigationControl, FlyToI
 import axios from 'axios';
 import boundary_data from './ca_boundaries.json';
 import { Link } from 'react-router-dom';
+import './map.css';
 
 class Map extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Map extends React.Component {
         latitude: this.props.latitude, //default for LA
         longitude: this.props.longitude, //default for LA
         width: "100%",
-        height: "100vh",
+        height: "100%",
         zoom: 10,
         minZoom: 5,
         cases_layer: null, 
@@ -185,7 +186,6 @@ class Map extends React.Component {
   onClickCounty(event) {
     event.preventDefault();
     let feature = event.features[0];
-    console.log(event)
     if(feature === undefined || feature.source === undefined) {
         this.setState({
             selected_county: null
@@ -194,7 +194,7 @@ class Map extends React.Component {
     }
     
     this.setState({
-        selected_county: feature, 
+        selected_county: feature.source, 
         latitude: feature.geometry.coordinates[1], 
         longitude: feature.geometry.coordinates[0], 
         transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
@@ -251,19 +251,27 @@ class Map extends React.Component {
                 onViewportChange={(viewport) => { this.setViewport(viewport)}}
                 interactiveLayerIds={this.state.interactiveLayerIds}
                 onClick={(event) => {this.onClickCounty(event)}}
+                mapStyle='mapbox://styles/mapbox/dark-v10'
+               
             >
                 {this.state.cases_layer}
 
-                {/* {this.state.selected_county ? 
+                {this.state.selected_county ? 
                     (
                         <Popup 
-                            latitude={this.state.selected_county.geometry.coordinates[1]} 
-                            longitude={this.state.selected_county.geometry.coordinates[0]}
-                            closeOnClick={true}
+                            latitude={this.props.latitude} 
+                            longitude={this.props.longitude}
+                            closeButton={false}
                             onClose={() => this.setState({selected_county: null})}
-                        />
+                        >
+                            <div >
+                         
+                                {this.state.selected_county}
+                            </div>
+                        </Popup>
+
                     ) : null
-                } */}
+                }
 
                 <GeolocateControl
                     style={geolocateStyle}

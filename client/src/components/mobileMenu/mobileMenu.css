@@ -56,7 +56,7 @@
 .Selection-list {
     padding-top: 10px;
     background-color: #121212;
-    height: 100vh;
+    height: 100%;
     overflow-y: scroll;
 }
 
@@ -65,4 +65,5 @@
     align-items: center;
 
 }
+
 

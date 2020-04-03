@@ -40,6 +40,23 @@ class App extends React.Component {
 
   }
 
+  getStyle(component_name) {
+    let style = {}
+    if(this.state.active_mobile_component === component_name) {
+      style.visitiblity = "visible";
+      style.width = "100%";
+
+    }else {
+      style.visibility = "hidden";
+      style.width= "0%";
+
+      if(component_name === "menu") {
+        style.height = "0%";
+      }
+    }
+    return style;
+  }
+
   render() {
 
   
@@ -48,74 +65,90 @@ class App extends React.Component {
 
 
       <div>
-        {/* <Header changeActiveMobileComponent={this.changeActiveMobileComponent}></Header> */}
-
-
-
-
-{/* 
+        <Header changeActiveMobileComponent={this.changeActiveMobileComponent}></Header>
+        
         <MediaQuery query="(max-width: 768px)">
           {
             (matches) => {
               return matches ? 
                 (
-
                   <div className="App-container">
-                    <div className="County-info">
-                      <>
+                    <div style={this.getStyle("news")} className="County-info-outer">
                       <CountyInfo county={this.state.county} />
                     </div>
-                    <div style={{visibility: "hidden"}} className="Map">
-                      <Map county={this.state.county} mapOnClick={this.mapOnClick}/>
+                    <div style={this.getStyle("map")} className="Map">
+                      <Map 
+                        selected_county={this.state.county}
+                        latitude={this.state.latitude}
+                        longitude={this.state.longitude}
+                        mapOnClick={this.onCountySelection}/>
                     </div>
-                    <MobileNav changeActiveMobileComponent={this.changeActiveMobileComponent} />
+                    <div style={this.getStyle("menu")} >
+                      <MobileMenu 
+                        changeActiveMobileComponent={this.changeActiveMobileComponent}
+                        prev_active_mobile_component={this.state.active_mobile_component} 
+                        selected_county={this.state.county}
+                        onCountySelection={this.onCountySelection} 
+                      />
+                    </div>
+        
                   </div>
+                )
 
-                ) 
-
-                : 
+                :
 
                 (
                   <div className="App-container">
-                    <div className="County-info">
+                    <div className="County-info-outer">
                       <CountyInfo county={this.state.county} />
                     </div>
-                    <div style={{display: "none"}} className="Map">
-                      <Map county={this.state.county} mapOnClick={this.mapOnClick}/>
+                    <div className="Map">
+                      <Map 
+                        selected_county={this.state.county}
+                        latitude={this.state.latitude}
+                        longitude={this.state.longitude}
+                        mapOnClick={this.onCountySelection}/>
                     </div>
                   </div>
+                )
 
-                ) 
+            }
+          }
+        </MediaQuery>
+        <MediaQuery query="(max-width: 768px)">
+          {
+            (matches) => {
+              return matches ? 
+
+                (
+                  <MobileNav 
+                    changeActiveMobileComponent={this.changeActiveMobileComponent}
+                  /> 
+                )
+                :
+                null
             }
           }
         </MediaQuery>
 
- */}
-
-        <MobileMenu 
-          changeActiveMobileComponent={this.changeActiveMobileComponent}
-          prev_active_mobile_component={this.state.active_mobile_component} 
-          selected_county={this.state.county}
-          onCountySelection={this.onCountySelection} 
-        />
-        
-        <div className="App-container">
-          <div className="County-info">
-            <CountyInfo county={this.state.county} />
-          </div>
-          <div className="Map">
-              <Map 
-                selected_county={this.state.county}
-                latitude={this.state.latitude}
-                longitude={this.state.longitude}
-                mapOnClick={this.onCountySelection}/>
-          </div>
-        </div>
-        
-
-        <MobileNav 
-          changeActiveMobileComponent={this.changeActiveMobileComponent}
-        />
+{/*         
+                  <div className="App-container">
+                    <div className="County-info-outer">
+                      <CountyInfo county={this.state.county} />
+                    </div>
+                    <div className="Map">
+                      <Map 
+                        selected_county={this.state.county}
+                        latitude={this.state.latitude}
+                        longitude={this.state.longitude}
+                        mapOnClick={this.onCountySelection}/>
+                    </div>
+                  </div>
+                  <MobileNav 
+                    changeActiveMobileComponent={this.changeActiveMobileComponent}
+                  />  */}
+                
+          
 
       </div>
     );

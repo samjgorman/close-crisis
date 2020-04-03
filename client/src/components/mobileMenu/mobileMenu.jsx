@@ -28,8 +28,7 @@ class MobileMenu extends Component{
                         longitude: county_info.lon
                     };
                 }
-                console.log("ddogggg")
-                console.log(build_counties)
+         
                 this.setState({
                     selected_county: this.props.selected_county,
                     prev_active_mobile_component: this.props.prev_active_mobile_component,
@@ -62,7 +61,6 @@ class MobileMenu extends Component{
     makeCountiesList(counties, selected_county) {
         let build_list = [];
         let county_names = Object.keys(counties).sort((c1, c2) => {return c1 > c2});
-        console.log(counties)
         for(let i = 0; i < county_names.length; ++i) {
             let county = county_names[i];
             build_list.push(

@@ -9,9 +9,8 @@
 
 .County-info {
     background-color: #121212;
-    width: 50vw;
-    height: 100vh;
     overflow-y: scroll;
+    height: 100%;
 }
 
 .Displaying {
@@ -84,7 +83,7 @@
 
   .News-feed {
     background-color: #121212;
-    height: 65vh;
+    height: 100%;
     /* overflow-y: scroll; */
     width: 100%
   }

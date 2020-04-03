@@ -3,6 +3,7 @@
     background-color: #1f2023;
     align-content: center;
     justify-content: center;
+    height: 10%;
 }
 
 .ion-icon-container {
@@ -34,3 +35,7 @@ ion-icon {
     overflow: hidden;
     outline:none;
 }
+
+
+
+  

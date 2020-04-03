@@ -9,8 +9,9 @@
   flex-direction: row;
   flex-wrap: nowrap;
 }
-.County-info {
-  height: 50%;
+
+
+.County-info-outer {
   width: 50%;
   flex-grow: 1;
 }
@@ -55,3 +56,5 @@
     transform: rotate(360deg);
   }
 }
+
+

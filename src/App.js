@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Header from './components/header/header.jsx';
 import CountyInfo from './components/countyInfo/countyInfo.jsx';
+import Footer from './components/footer/footer.jsx';
+
 import Map from './components/map/map.jsx';
 import MobileNav from './components/mobileNav/mobileNav.jsx';
 import MobileMenu from './components/mobileMenu/mobileMenu.jsx';
@@ -172,6 +174,9 @@ class App extends React.Component {
             }
           }
         </MediaQuery>
+        
+        <Footer></Footer>
+
 
 {/*         
                   <div className="App-container">

@@ -13,11 +13,11 @@ class Map extends React.Component {
 
     this.state = {
         selected_county: this.props.selected_county,
-        latitude: this.props.latitude, //default for LA
-        longitude: this.props.longitude, //default for LA
+        latitude: 36.7783, //° N, 119.4179° Wthis.props.latitude, //default for LA
+        longitude: -119.4179, //this.props.longitude, //default for LA
         width: "100%",
         height: "50em",
-        zoom: 10,
+        zoom: 5,
         minZoom: 5,
         cases_layer: null, 
         interactiveLayerIds: null, 
@@ -57,10 +57,10 @@ class Map extends React.Component {
   }
   
   setViewport(viewport) {
-    let max_latitude = 42;
-    let min_latitude = 32.52;
-    let min_longitude = -124.6;
-    let max_longitude = -114.05;
+    let max_latitude = 36;
+    let min_latitude = 35.5;
+    let min_longitude = -119.6;
+    let max_longitude = -118;
 
     /**
      * the 4 if statements below restrict panning

@@ -34,6 +34,7 @@ class App extends React.Component {
 
     this.onCountySelection = (selected_county, longitude, latitude) => {
       console.log("map clicked" + selected_county);
+      document.getElementsByClassName("County-info")[0].scrollTop = 0;
       this.setState({
         mobile_map_county: selected_county,
         county: selected_county,
@@ -49,6 +50,8 @@ class App extends React.Component {
     };
     
     this.onCountySelectionMobileMenu = (selected_county) => {
+      document.getElementsByClassName("County-info")[0].scrollTop = 0;
+
       this.setState({
         mobile_info_county: selected_county,
       })
@@ -108,6 +111,7 @@ class App extends React.Component {
             (matches) => {
               return matches ? 
                 (
+
                   <div className="App-container">
                     <div style={this.getStyle("news")} className="County-info-outer">
                       <CountyInfo 

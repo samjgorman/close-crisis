@@ -23,6 +23,7 @@ class CountyInfo extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.endpoint)
     /*
       replace with default county
     */
@@ -80,7 +81,7 @@ class CountyInfo extends React.Component {
           <StatisticsView 
             county={this.state.county}
             updateArticlesInParent={this.updateArticlesInParent}
-            endpoint="https://us-central1-iris-263608.cloudfunctions.net/close_ca_regional_news?county="
+            endpoint={this.props.endpoint}
           />
           <div className="News-feed">
             <div className="Local-updates-for-Los-Angeles-Orange-County">

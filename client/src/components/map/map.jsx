@@ -273,7 +273,6 @@ class Map extends React.Component {
                       <div>
                         <StatisticsView 
                             county={this.state.selected_county}
-                            endpoint="https://us-central1-iris-263608.cloudfunctions.net/http_coronavirus?county="
                         />
                       </div>
                       :

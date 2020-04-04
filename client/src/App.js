@@ -87,7 +87,10 @@ class App extends React.Component {
                 (
                   <div className="App-container">
                     <div style={this.getStyle("news")} className="County-info-outer">
-                      <CountyInfo county={this.state.county} />
+                      <CountyInfo 
+                        county={this.state.county} 
+
+                      />
                     </div>
                     <div style={this.getStyle("map")} className="Map">
                       <Map 
@@ -113,7 +116,9 @@ class App extends React.Component {
                 (
                   <div className="App-container">
                     <div className="County-info-outer">
-                      <CountyInfo county={this.state.county} />
+                      <CountyInfo 
+                        county={this.state.county} 
+                      />
                     </div>
                     <div className="Map">
                       <Map 

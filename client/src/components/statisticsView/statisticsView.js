@@ -18,10 +18,11 @@ class StatisticsView extends React.Component {
   }
 
   updateCountyInfo(county) {
+    if(county == null || county == undefined) {
+      return;
+    }
+    let endpoint = "https://us-central1-iris-263608.cloudfunctions.net/close_ca_regional_news?county=" + county; //region
 
-    let endpoint = this.props.endpoint + county; //region
-    //let endpoint = "https://us-central1-iris-263608.cloudfunctions.net/close_ca_regional_news?county=" + county; 
-    console.log(county);
     this.setState({
       county: "Loading", 
       cases: "Loading", 
@@ -36,6 +37,8 @@ class StatisticsView extends React.Component {
       }
       axios.get(endpoint).then(
         (response) => {
+          console.log("Below is the response for: " + county)
+          console.log(response.data)
           //index 1 means newly rendered component
           //scroll to top on update
           //document.getElementsByClassName('County-info')[1].scrollTo(0, 0) 
@@ -55,6 +58,7 @@ class StatisticsView extends React.Component {
         }
       ).catch(
         (err) => {
+          console.log("An erorr occurred for: " + county)
           console.log(err);
         }
       )});

@@ -72,12 +72,24 @@ class StatisticsView extends React.Component {
     /*
       replace with default county
     */
+   if(this.props.cases !== undefined && this.props.cases !== null) {
+    this.setState({
+      county: this.props.county, 
+      cases: this.props.cases,
+      deaths: this.props.deaths,
+      new_cases: this.props.new_cases,
+      new_deaths: this.props.deaths
+    });
+    return;
+   }
    this.updateCountyInfo(this.props.county);
+   
 
   }
 
   componentDidUpdate(prev_props) {
     if(prev_props.county !== this.props.county) {
+        
         this.componentDidMount();
     }
       

@@ -28,7 +28,12 @@ class Map extends React.Component {
         new_deaths: null, 
         hover_county: null,
         hover_latitude: null,
-        hover_longitude: null
+        hover_longitude: null, 
+        cases: null, 
+        deaths: null, 
+        new_cases: null, 
+        new_deaths: null,
+        county_stats: null
     };
 
   }
@@ -187,22 +192,38 @@ class Map extends React.Component {
       axios.get("https://us-central1-iris-263608.cloudfunctions.net/close_ca_map_all").then(
           (response) => {
             let build_cases_layer = [];
+            let build_county_stats = {}
             let counties = [];
             for(let i = 0; i < response.data.items.length; ++i) {
                 let county_info = response.data.items[i];
                 let circle = this.makeSource(county_info.county, county_info.lat, county_info.lon, county_info.severity);
                 build_cases_layer.push(circle);
                 counties.push(county_info.county);
+
+
+                build_county_stats[county_info.county] = {
+                  cases: county_info.cases, 
+                  deaths: county_info.deaths,
+                  new_cases: county_info.new_cases, 
+                  new_deaths: county_info.new_deaths
+                }
+
+
             }
 
             this.setState({
                 cases_layer: build_cases_layer,
-                interactiveLayerIds: counties
+                interactiveLayerIds: counties,
+                county_stats: build_county_stats, 
+                cases: build_county_stats[this.state.selected_county].cases,
+                deaths: build_county_stats[this.state.selected_county].deaths,
+                new_cases: build_county_stats[this.state.selected_county].new_cases,
+                new_deaths: build_county_stats[this.state.selected_county].new_deaths,
             })
           }
           
       ).catch(
-          (err) => {
+          (err) => { 
               console.log(err);
           }
       )
@@ -219,26 +240,18 @@ class Map extends React.Component {
       longitude: feature.geometry.coordinates[0], 
       transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
       transitionDuration: 'auto', 
-      zoom: 7
+      zoom: 7,
+      county: feature.source, 
+      cases: this.state.county_stats[feature.source].cases,
+      deaths: this.state.county_stats[feature.source].deaths,
+      new_cases: this.state.county_stats[feature.source].new_cases,
+      new_deaths: this.state.county_stats[feature.source].new_deaths
       //deprecated the above camera pan animation
 
     });
     this.props.mapOnClick(feature.source, feature.geometry.coordinates[0], feature.geometry.coordinates[1]);
     return;
-    this.setState({
-        selected_county: feature.source,
-        latitude: feature.geometry.coordinates[1], 
-        longitude: feature.geometry.coordinates[0], 
-        transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
-        transitionDuration: 'auto', 
-        zoom: 7
-        //deprecated the above camera pan animation
-
-    }, 
-    
-    () => {this.props.mapOnClick(feature.source, feature.geometry.coordinates[0], feature.geometry.coordinates[1])})
-
-    
+ 
   }
 
   onCountyEnter(event) {
@@ -312,6 +325,10 @@ class Map extends React.Component {
                       <div>
                         <StatisticsView 
                             county={this.state.selected_county}
+                            cases={this.state.cases}
+                            deaths={this.state.deaths}
+                            new_cases={this.state.new_cases}
+                            new_deaths={this.state.new_deaths}
                         />
                       </div>
                       :

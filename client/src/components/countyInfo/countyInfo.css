@@ -128,7 +128,7 @@
   }
 
   .Column {
-    padding-right: 10%;
+    padding-right: 40px;
     display: flex;
     flex-direction: column;
  
@@ -173,10 +173,5 @@
   }
 
   @media only screen and (max-width: 768px) {
-    .County-info {
-      position: absolute;
-      bottom: 60px;
-      top: 50px
-    
-    }
+
   }

@@ -25,15 +25,16 @@ class Map extends React.Component {
         cases: null,
         deaths: null,
         new_cases: null,
-        new_deaths: null
+        new_deaths: null, 
+        hover_county: null,
+        hover_latitude: null,
+        hover_longitude: null
     };
 
   }
 
   componentDidMount() {
-
     this.updateCasesLayer();
-
 
   }
 
@@ -224,20 +225,42 @@ class Map extends React.Component {
     
   }
 
-  
+  onCountyEnter(event) {
+
+    return;
+    //below deprecated for now
+    console.log(event)
+    event.preventDefault();
+    
+    this.setState({
+      hover_county: "testing",
+      hover_latitude: event.lngLat[1], 
+      hover_longitude: event.lngLat[0]
+    })
+    
+  }
+
+  onCountyLeave() {
+    return;
+    //below deperecated for now;
+    this.setState({
+      hover_county: null,
+      hover_latitude: null,
+      hover_longitude: null
+    })
+  }
+
   makePopup(county, latitude, longitude) {
     return (
-        <Popup 
-            latitude={latitude} 
-            longitude={longitude}
-            closeOnClick={false}
-            onClose={() => this.setState({selected_county: null})}
-        >
-            {/**
-            * Your code here Sam
-            */
-            }
-        </Popup>
+          <Popup 
+          latitude={latitude} 
+          longitude={longitude}
+          closeButton={false}
+      >
+          <div >
+              {county}
+          </div>
+      </Popup>
     )
   }
 
@@ -266,7 +289,7 @@ class Map extends React.Component {
 
         <div className="Map-container">
           
-            <MediaQuery query="(max-width: 768px)">
+            {/* <MediaQuery query="(max-width: 768px)">
               {
                 (matches) => {
                     return matches ?
@@ -281,7 +304,7 @@ class Map extends React.Component {
                 }
               }
               </MediaQuery>
-         
+          */}
 
 
             <MapGL 
@@ -291,23 +314,21 @@ class Map extends React.Component {
                 interactiveLayerIds={this.state.interactiveLayerIds}
                 onClick={(event) => {this.onClickCounty(event)}}
                 mapStyle='mapbox://styles/mapbox/dark-v10'
+                onMouseEnter={(event) => this.onCountyEnter(event)}
+                onMouseLeave={() => this.onCountyLeave()}
                
             >
                 {this.state.cases_layer}
 
+                {this.state.hover_county !== null ?
+                
+                  this.makePopup(this.state.hover_county, this.state.hover_latitude, this.state.hover_longitude)
+                  :
+                  null
+                }
                 {this.state.selected_county !== "No county chosen" && this.state.selected_county !== null ? 
                     (
-                        <Popup 
-                            latitude={this.props.latitude} 
-                            longitude={this.props.longitude}
-                            closeButton={false}
-                            onClose={() => this.setState({selected_county: null})}
-                        >
-                            <div >
-                         
-                                {this.state.selected_county}
-                            </div>
-                        </Popup>
+                        this.makePopup(this.props.selected_county, this.props.latitude, this.props.longitude)
 
                     ) : null
                 }

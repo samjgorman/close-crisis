@@ -76,6 +76,7 @@ class CountyInfo extends React.Component {
     /**
      * 
      */
+
     return (
       <div className="County-info">
           <StatisticsView 

@@ -1,5 +1,4 @@
 .header {
-
     width: 95%;
     background-color: #27292d;
     display: flex;
@@ -47,6 +46,7 @@
 
 @media only screen and (max-width: 768px) {
     .header {
-        position: fixed;
+        position: absolute !important;
+        top: 0px; 
     }
   }

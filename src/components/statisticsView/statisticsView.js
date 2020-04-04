@@ -3,6 +3,8 @@ import "../countyInfo/countyInfo.css";
 import axios from 'axios';
 import { tsExpressionWithTypeArguments } from '@babel/types';
 import MediaQuery from 'react-media';
+import './statisticsView.css';
+
 
 class StatisticsView extends React.Component {
   constructor(props) {

@@ -17,7 +17,7 @@ class App extends React.Component {
     this.state = {
       county: "Los Angeles County", //default county
       mobile_map_county: "Los Angeles County",
-      mobile_info_county: "SF Bay Area",
+      mobile_info_county: "LA and Orange Counties",
       latitude: 34.196398, //default for LA
       longitude: -118.261862, //defualt for LA
       active_mobile_component: "news", //by default, other possible values are "map", "menu"

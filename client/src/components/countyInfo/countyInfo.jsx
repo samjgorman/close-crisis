@@ -79,6 +79,15 @@ class CountyInfo extends React.Component {
 
     return (
       <div className="County-info">
+         <div className="Displaying">
+            Displaying 
+            <div className="County">
+            {this.state.county}
+            </div>
+        </div>
+        <div className="COVID-19-changes-in-your-area">
+            COVID-19 changes in your area
+        </div>
           <StatisticsView 
             county={this.state.county}
             updateArticlesInParent={this.updateArticlesInParent}

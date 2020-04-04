@@ -15,10 +15,13 @@
 }
 
 .Displaying {
+  background-color: #151515;
+
     font-family: sans-serif;
     font-size: 16px;
     color: #717171;
     padding-top: 20px;
+    padding-left: 10%;
 }
 
 .County {
@@ -29,10 +32,12 @@
   }
 
   .COVID-19-changes-in-your-area {
+    background-color: #151515;
     font-family: sans-serif;
     font-size: 16px;
     color: #717171;
     padding-top: 24px;
+    padding-left: 10%;
  
   }
 

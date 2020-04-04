@@ -57,10 +57,10 @@ class Map extends React.Component {
   }
   
   setViewport(viewport) {
-    let max_latitude = 36;
-    let min_latitude = 35.5;
-    let min_longitude = -119.6;
-    let max_longitude = -118;
+    let max_latitude = 42;
+    let min_latitude = 34;
+    let min_longitude = -124.6;
+    let max_longitude = -115;
 
     /**
      * the 4 if statements below restrict panning
@@ -127,6 +127,7 @@ class Map extends React.Component {
   }
 
   makeLayer(county, severity) {
+
 
     let layer_properties = {
         id: county, 
@@ -289,7 +290,7 @@ class Map extends React.Component {
 
         <div className="Map-container">
           
-            {/* <MediaQuery query="(max-width: 768px)">
+            <MediaQuery query="(max-width: 768px)">
               {
                 (matches) => {
                     return matches ?
@@ -304,7 +305,7 @@ class Map extends React.Component {
                 }
               }
               </MediaQuery>
-          */}
+         
 
 
             <MapGL 

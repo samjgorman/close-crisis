@@ -63,7 +63,7 @@ class App extends React.Component {
         mobile_map_county: selected_county,
         county: selected_county
       })
-
+    
       if(latitude !== undefined && longitude !== undefined) {
         this.setState({
           latitude: latitude,

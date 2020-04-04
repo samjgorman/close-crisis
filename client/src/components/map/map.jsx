@@ -34,12 +34,18 @@ class Map extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({
+      latitude: this.props.latitude, 
+      longitude: this.props.longitude,
+      zoom: 7,
+      transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
+      transitionDuration: 'auto', 
+  });
     this.updateCasesLayer();
 
   }
 
   componentDidUpdate(prev_props) {
-
       if(prev_props.selected_county !== this.props.selected_county) {
         // this.setState({
         //     latitude: this.props.latitude, 
@@ -208,15 +214,24 @@ class Map extends React.Component {
     if(feature === undefined || feature.source === undefined) {
         return;
     }
+    this.setState({
+      latitude: feature.geometry.coordinates[1], 
+      longitude: feature.geometry.coordinates[0], 
+      transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
+      transitionDuration: 'auto', 
+      zoom: 7
+      //deprecated the above camera pan animation
+
+    });
     this.props.mapOnClick(feature.source, feature.geometry.coordinates[0], feature.geometry.coordinates[1]);
     return;
     this.setState({
         selected_county: feature.source,
-        // latitude: feature.geometry.coordinates[1], 
-        // longitude: feature.geometry.coordinates[0], 
-        // transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
-        // transitionDuration: 'auto', 
-        // zoom: 7
+        latitude: feature.geometry.coordinates[1], 
+        longitude: feature.geometry.coordinates[0], 
+        transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
+        transitionDuration: 'auto', 
+        zoom: 7
         //deprecated the above camera pan animation
 
     }, 

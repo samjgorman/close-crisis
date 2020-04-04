@@ -13,21 +13,17 @@ class MobileNav extends React.Component {
   }
 
   onNewsClick() {
-    this.setState({
-        active_icon: "news"
-    });
+
     this.props.changeActiveMobileComponent("news");
   }
 
   onMapClick() {
-      this.setState({
-          active_icon: "map"
-      });
+ 
       this.props.changeActiveMobileComponent("map");
 
   }
   getIconColor(icon_name) {
-    if(this.state.active_icon === icon_name) {
+    if(this.props.active_icon === icon_name) {
         return "#cfcfcf";
     }else {
         return "#555555"

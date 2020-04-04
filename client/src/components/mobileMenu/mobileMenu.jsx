@@ -10,7 +10,6 @@ class MobileMenu extends Component{
         //TODO: get prop prev component 
         //TODO: get prop current county
         this.state = {
-            selected_county: "SF Bay Area", //by defualt on mount
             counties: [
                 "San Diego Area", 
                 "SF Bay Area", 
@@ -65,7 +64,7 @@ class MobileMenu extends Component{
     }
 
     getIconColor(county) {
-        if(this.state.selected_county === county) {
+        if(this.props.selected_county === county) {
             return "#ffa700";
         }else {
             return "#27292d";

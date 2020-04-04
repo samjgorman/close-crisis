@@ -166,6 +166,7 @@ class App extends React.Component {
 
                 (
                   <MobileNav 
+                    active_icon={this.state.active_mobile_component}
                     changeActiveMobileComponent={this.changeActiveMobileComponent}
                   /> 
                 )

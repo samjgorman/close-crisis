@@ -7,9 +7,6 @@ import MobileNav from './components/mobileNav/mobileNav.jsx';
 import MobileMenu from './components/mobileMenu/mobileMenu.jsx';
 import MediaQuery from "react-media";
 import { Router, Route } from 'react-router-dom';
-
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-
 class App extends React.Component {
   constructor(props) {
     super(props);

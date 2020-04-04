@@ -16,16 +16,15 @@
 
 .Displaying {
   background-color: #151515;
-
-    font-family: sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 16px;
     color: #717171;
-    padding-top: 20px;
+    padding-top: 4em;
     padding-left: 10%;
 }
 
 .County {
-    font-family: Times;
+    font-family: 'DM Serif Display', serif;
     font-size: 36px;
     color: #ffffff;
 
@@ -33,7 +32,8 @@
 
   .COVID-19-changes-in-your-area {
     background-color: #151515;
-    font-family: sans-serif;
+    font-family: 'DM Sans', sans-serif;
+
     font-size: 16px;
     color: #717171;
     padding-top: 24px;
@@ -42,7 +42,6 @@
   }
 
   .Confirmed-number {
-    font-family: sans-serif;
     font-size: 48px;
     color: #ffffff;
   }
@@ -121,7 +120,8 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-start;
-      font-family: sans-serif;
+      font-family: 'DM Sans', sans-serif;
+
 
   }
 

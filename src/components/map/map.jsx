@@ -139,7 +139,7 @@ class Map extends React.Component {
         id: county, 
         type: "circle", 
         paint: {
-            'circle-radius': severity*3, 
+            'circle-radius': severity*8, 
             'circle-color': '#ffa700', 
             'circle-opacity': 0.3, 
             'circle-stroke-width': 1, 

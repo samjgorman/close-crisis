@@ -1,5 +1,5 @@
 .Mobile-nav-container {
-    position: fixed;
+    position: sticky;
     display: flex;
     background-color: #1f2023;
     align-content: center;

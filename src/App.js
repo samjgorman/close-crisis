@@ -184,7 +184,20 @@ class App extends React.Component {
           }
         </MediaQuery>
         
-        <Footer></Footer>
+        <MediaQuery query="(max-width: 768px)">
+          {
+            (matches) => {
+              return matches ? 
+
+                (
+                  null
+                )
+                :
+                <Footer></Footer>
+            }
+          }
+        </MediaQuery>
+       
 
 
 {/*         

@@ -40,9 +40,9 @@ class Map extends React.Component {
 
   componentDidMount() {
     this.setState({
-      latitude: this.props.latitude, 
-      longitude: this.props.longitude,
-      zoom: 7,
+      latitude: 34.7783,// this.props.latitude, 
+      longitude: -119.4179,//this.props.longitude,
+      zoom: 5,
       transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
       transitionDuration: 'auto', 
   });

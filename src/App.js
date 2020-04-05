@@ -55,12 +55,12 @@ class App extends React.Component {
     this.onCountySelectionMobileMenu = (selected_county) => {
       document.getElementsByClassName("County-info")[0].scrollTop = 0;
       this.onCountySelectionMobileMenu = (selected_county) => {
-              document.getElementsByClassName("County-info")[0].scrollTop = 0;
+        //       document.getElementsByClassName("County-info")[0].scrollTop = 0;
         
               this.setState({
                 mobile_info_county: selected_county,
-                active_mobile_component: "news", //by default, other possible values are "map", "menu"
-                prev_active_mobile_component: "news"
+        //         active_mobile_component: "news", //by default, other possible values are "map", "menu"
+        //         prev_active_mobile_component: "news"
               })
             }
       // this.setState({

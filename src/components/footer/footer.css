@@ -9,3 +9,8 @@
     color: white;
 
 }
+
+.contact{
+    display: flex;
+    flex-direction: row;
+}

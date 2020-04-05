@@ -27,9 +27,6 @@
   flex-grow: 1;
 }
 
-.Test-Map{
-  height: 60em;
-}
 
 @media only screen and (max-width: 768px) {
   .County-info-outer {

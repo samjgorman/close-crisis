@@ -11,7 +11,8 @@ const Footer = ( {title, color} ) => {
     <div className = "footer-wrapper"> 
         <div className = "footer-section-wrapper">
         
-            <div className = "section-two"> 
+            <div className = "desc"> 
+                <ion-icon id = "info" name="information-circle-outline"></ion-icon>
                 <div className = "section-two-title">Created by scholars at UC Berkeley and Stanford.</div>
 
                   
@@ -19,7 +20,7 @@ const Footer = ( {title, color} ) => {
 
         </div >
         <div className = "contact"> 
-            <ion-icon name="mail-outline" className = "mail"></ion-icon>
+            <ion-icon id = "mail" name="mail-outline" className = "mail"></ion-icon>
             <div className = "footer-text">sgorman at stanford.edu</div>
         </div>
     </div>

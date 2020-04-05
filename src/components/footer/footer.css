@@ -15,6 +15,15 @@
     flex-direction: row;
 }
 
+.desc{
+    display: flex;
+    flex-direction: row;
+}
+
 .mail-outline{
     padding-right: 5em;
+}
+
+#mail{
+    padding-right: 0.7em;
 }

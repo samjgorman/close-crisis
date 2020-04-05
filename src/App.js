@@ -21,6 +21,7 @@ class App extends React.Component {
       longitude: -118.261862, //defualt for LA
       active_mobile_component: "news", //by default, other possible values are "map", "menu"
       prev_active_mobile_component: "news",
+      //arbitrary
     };
 
     

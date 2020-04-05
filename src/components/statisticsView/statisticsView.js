@@ -78,7 +78,7 @@ class StatisticsView extends React.Component {
       cases: this.props.cases,
       deaths: this.props.deaths,
       new_cases: this.props.new_cases,
-      new_deaths: this.props.deaths
+      new_deaths: this.props.new_deaths
     });
     return;
    }

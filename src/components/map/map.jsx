@@ -15,8 +15,8 @@ class Map extends React.Component {
         selected_county: this.props.selected_county,
         latitude: 36.7783, //° N, 119.4179° Wthis.props.latitude, //default for LA
         longitude: -119.4179, //this.props.longitude, //default for LA
-        width: "100%",
-        height: "60em",
+        width: this.props.width,
+        height: this.props.height,
         zoom: 5,
         minZoom: 5,
         cases_layer: null, 

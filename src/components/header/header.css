@@ -1,15 +1,20 @@
 .header {
-    width: 95%;
     background-color: #27292d;
-    display: flex;
+    display: grid;
+    grid-template-columns: [firstC] 33% [secondC] 33% [thirdC] 33%;
+    grid-template-rows: [firstR] 100%;
     align-items: center;
-    padding-left: 5%;
-    height: 10%;
 }
 
 .logo-pic {
     width: 48px;
     height: 58.7px;
+}
+
+.grid-logo{
+    display: flex;
+    flex-direction: row;
+    padding-left: 10vw;
 }
 
 .logo-title {
@@ -21,27 +26,35 @@
     line-height: 1.38;
     letter-spacing: normal;
     color: #ffffff;
+    padding-top: 0.5em;
 
 }
 
 #Menu-icon {
-    height: 24px;
-    width: 24px;
+    height: 20px;
+    width: 36px;
     color: white;
+}
+
+#Close-icon{
+    height: 48px;
+    width: 36px;
+    color: white;
+
 }
 
 
 .Menu-button {
+    grid-area: thirdC/thirdC/firstR/firstR;
     background-color: Transparent;
     background-repeat: no-repeat;
     border: none;
     cursor:pointer;
     overflow: hidden;
     outline:none;
-    position: absolute;
-    padding: 4px;
     right: 0px;
     top: 0px;
+    padding-left: 15vw;
 }
 
 @media only screen and (max-width: 768px) {

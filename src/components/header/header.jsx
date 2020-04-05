@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Logo from "../../images/close-logo@2x.png"
 import "./header.css"
 import MediaQuery from "react-media";
+import menu from '../../images/menu@5x.png';
+
 
 // import './components/footer.css';
 // import rocket from '../images/rocket@4x.png';
@@ -38,10 +40,11 @@ class Header extends Component{
     render() {
         return (
             <div className="header">
+            <div className = "grid-logo"> 
                 <img className="logo-pic" src={Logo} />
-                <span className="logo-title">
-                    Close
-                </span>
+                <div className="logo-title">Close</div>
+                    
+            </div>
                 <MediaQuery query="(max-width: 768px)">
                     {
                         (match) => {
@@ -51,9 +54,11 @@ class Header extends Component{
                                 <button onClick={() => {this.onMenuClick()}} className="Menu-button"> 
                                     {
                                         this.state.menu_active ? 
-                                            (<ion-icon  id="Menu-icon" name="close-outline"></ion-icon>)
+                                            (<ion-icon  id="Close-icon" name="close-outline"></ion-icon>)
                                             :
-                                            (<ion-icon id="Menu-icon" name="menu-outline"></ion-icon>)
+                                            <img id = "Menu-icon" src = {menu} />
+
+                                            // (<ion-icon id="Menu-icon" name="menu-outline"></ion-icon>)
                                     }
                                 </button>
                             )

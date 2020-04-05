@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     padding-left: 5%;
-    height: 50px;
+    height: 10%;
 }
 
 .logo-pic {
@@ -46,7 +46,7 @@
 
 @media only screen and (max-width: 768px) {
     .header {
-        position: absolute !important;
+        position: sticky !important;
         top: 0px; 
     }
   }

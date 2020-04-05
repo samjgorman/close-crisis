@@ -41,10 +41,9 @@ class Header extends Component{
     render() {
         return (
             <div className="header">
-            <div className = "grid-logo"> 
+             <div className = "grid-logo"> 
                 <img className="logo-pic" src={Logo} />
                 <div className="logo-title">Close</div>
-                    
             </div>
                 <MediaQuery query="(max-width: 768px)">
                     {

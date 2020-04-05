@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.2",
     "react": "^16.13.1",
+    "react-content-loader": "^5.0.2",
     "react-dom": "^16.13.1",
     "react-map-gl": "^5.2.3",
     "react-media": "^1.10.0",

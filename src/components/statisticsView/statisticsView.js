@@ -4,6 +4,7 @@ import axios from 'axios';
 import { tsExpressionWithTypeArguments } from '@babel/types';
 import MediaQuery from 'react-media';
 import './statisticsView.css';
+import ContentLoader, { List } from 'react-content-loader'
 
 
 class StatisticsView extends React.Component {
@@ -32,10 +33,12 @@ class StatisticsView extends React.Component {
       new_cases: "Loading", 
       new_deaths: "Loading", 
       articles: [], 
+      newsLoaded: false
 
     }, () => {
       if(this.props.updateArticlesInParent !== undefined && this.props.updateArticlesInParent !== null) {
-        this.props.updateArticlesInParent([]);
+        const MyList = () => <List />
+        this.props.updateArticlesInParent((MyList));
       }
       axios.get(endpoint).then(
         (response) => {
@@ -52,7 +55,8 @@ class StatisticsView extends React.Component {
                 deaths: response.data.deaths, 
                 new_cases: response.data.new_cases, 
                 new_deaths: response.data.new_deaths, 
-                articles: response.data.articles
+                articles: response.data.articles,
+                newsLoaded: true
               })
               if(this.props.updateArticlesInParent !== undefined && this.props.updateArticlesInParent !== null) {
                 this.props.updateArticlesInParent(response.data.articles);

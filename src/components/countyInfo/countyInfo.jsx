@@ -1,7 +1,11 @@
 import React from 'react';
 import "./countyInfo.css";
 import StatisticsView from "../statisticsView/statisticsView.js"
+import Placeholder from "../placeholder/placeholder.jsx"
+
 import axios from 'axios';
+import ContentLoader, { List } from 'react-content-loader'
+
 
 class CountyInfo extends React.Component {
   constructor(props) {
@@ -45,6 +49,9 @@ class CountyInfo extends React.Component {
   }
 
   displayNewsFeed() {
+    if(!Array.isArray(this.state.articles)){
+      return this.state.articles
+    }
     return  this.state.articles.sort( //sort the newsfeed articles by date, earliest to latest
       function(article1, article2) {
         return new Date(article1.timestamp) - new Date(article2.timestamp);
@@ -98,6 +105,13 @@ class CountyInfo extends React.Component {
             <div className="Local-updates-for-Los-Angeles-Orange-County">
               Local updates for {this.state.county}
             </div>
+
+          {/* {this.props.newsLoaded ? (
+                        null
+                        ) : (
+                          <Placeholder/>
+                            )} */}
+            
             {this.displayNewsFeed()}
           </div>
       </div>

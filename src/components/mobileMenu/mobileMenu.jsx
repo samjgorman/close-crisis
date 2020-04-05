@@ -1,6 +1,8 @@
 import React, {Component} from 'react'; 
 import axios from 'axios';
 import './mobileMenu.css';
+// import selected from '../../images/selectedList@svg';
+// import unselected from '../../images/unselectedList@svg';
 
 
 
@@ -15,7 +17,7 @@ class MobileMenu extends Component{
                 "SF Bay Area", 
                 "Fresno County", 
                 "Inland Empire",
-                "Sacremento, San Joaquin, Stanislaus",
+                "Sacramento, San Joaquin, Stanislaus",
                 "LA and Orange Counties",  
                 "Kern, Ventura, and Santa Barbara County"
             ],
@@ -46,6 +48,7 @@ class MobileMenu extends Component{
                 <div key={county} className="List-element">
                     <button onClick={() => { this.onCountySelection(county) }} className="Select-button">
                         <div className="Button-container">
+
                                 <ion-icon 
                                     style={{color: this.getIconColor(county)}} 
                                     name="stop"
@@ -79,7 +82,9 @@ class MobileMenu extends Component{
                     <div className="Select-an-area">
                         Select an area: 
                     </div>
+                <div className = "counties">
                     {this.makeCountiesList(this.state.counties)}
+                </div>
                 </div>
             </div>
 

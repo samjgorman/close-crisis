@@ -322,7 +322,7 @@ class Map extends React.Component {
               {
                 (matches) => {
                     return matches ?
-                      <div>
+                      <div className = "mapStatsContainer">
                         <StatisticsView 
                             county={this.state.selected_county}
                             cases={this.state.cases}

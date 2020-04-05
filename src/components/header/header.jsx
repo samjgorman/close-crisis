@@ -3,6 +3,7 @@ import Logo from "../../images/close-logo@2x.png"
 import "./header.css"
 import MediaQuery from "react-media";
 import menu from '../../images/menu@5x.png';
+import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 // import './components/footer.css';

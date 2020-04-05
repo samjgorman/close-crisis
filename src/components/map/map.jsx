@@ -40,9 +40,9 @@ class Map extends React.Component {
 
   componentDidMount() {
     this.setState({
-      latitude: this.props.latitude, 
-      longitude: this.props.longitude,
-      zoom: 7,
+      latitude: 34.7783,// this.props.latitude, 
+      longitude: -119.4179,//this.props.longitude,
+      zoom: 5,
       transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
       transitionDuration: 'auto', 
   });
@@ -69,7 +69,7 @@ class Map extends React.Component {
   
   setViewport(viewport) {
     let max_latitude = 42;
-    let min_latitude = 34;
+    let min_latitude = 31;
     let min_longitude = -124.6;
     let max_longitude = -115;
 
@@ -236,7 +236,7 @@ class Map extends React.Component {
         return;
     }
     this.setState({
-      latitude: feature.geometry.coordinates[1], 
+      latitude: feature.geometry.coordinates[1] - .5, 
       longitude: feature.geometry.coordinates[0], 
       transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
       transitionDuration: 'auto', 

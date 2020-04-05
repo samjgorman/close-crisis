@@ -127,8 +127,7 @@ class App extends React.Component {
                         latitude={this.state.latitude}
                         longitude={this.state.longitude}
                         mapOnClick={this.onCountySelectionMobileMap}
-                        width={"100%"}
-                        height={"20em"}
+
                         />
                     </div>
                     <div style={this.getStyle("menu")} >
@@ -158,8 +157,7 @@ class App extends React.Component {
                         latitude={this.state.latitude}
                         longitude={this.state.longitude}
                         mapOnClick={this.onCountySelection}
-                        width={"100%"}
-                        height={"100%"}
+
                         />
                     </div>
                   </div>

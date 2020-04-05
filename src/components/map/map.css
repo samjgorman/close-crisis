@@ -1,6 +1,6 @@
 .Map-container {
     width: 100%;
-    height: 60em; /**changing this to % somehow breaks the map... weird*/
+    height: 100%; /**changing this to % somehow breaks the map... weird*/
 }
 
 .test-map{

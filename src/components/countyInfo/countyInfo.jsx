@@ -57,7 +57,7 @@ class CountyInfo extends React.Component {
               {article.mins_ago}
             </div>
             <div className="Title">
-              <a href={article.article_url} className="Title">
+              <a target="_blank" href={article.article_url} className="Title">
                 {article.article_title}
               </a>
             </div>

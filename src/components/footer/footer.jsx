@@ -13,15 +13,13 @@ const Footer = ( {title, color} ) => {
         
             <div className = "desc"> 
                 <ion-icon id = "info" name="information-circle-outline"></ion-icon>
-                <div className = "section-two-title">Created by scholars at UC Berkeley and Stanford.</div>
-
-                  
+                <div className = "desc-text">Created by scholars at UC Berkeley and Stanford.</div>
             </div>
 
         </div >
         <div className = "contact"> 
             <ion-icon id = "mail" name="mail-outline" className = "mail"></ion-icon>
-            <div className = "footer-text">sgorman at stanford.edu</div>
+            <a className = "footer-text" href={`mailto:sgorman@stanford.edu`}>sgorman at stanford.edu</a> 
         </div>
     </div>
   

@@ -7,6 +7,13 @@
   height: 60em;
 }
 
+.map-label{
+
+}
+
+.mapboxgl-popup{
+
+}
 
 @media only screen and (max-width: 768px) {
     .Map-container {

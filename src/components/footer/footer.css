@@ -13,6 +13,7 @@
 .contact{
     display: flex;
     flex-direction: row;
+    
 }
 
 .desc{
@@ -20,10 +21,30 @@
     flex-direction: row;
 }
 
+.desc-text{
+    padding-bottom: 0.5em;
+}
+
 .mail-outline{
     padding-right: 5em;
 }
 
+#info{
+    padding-right: 0.7em;
+
+}
+
 #mail{
     padding-right: 0.7em;
+}
+
+.footer-text{
+    text-decoration:none; 
+    cursor:pointer;  
+    color: white;
+}
+
+.footer-text:hover{
+    text-decoration: none;
+    color: #ffa700;
 }

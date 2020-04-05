@@ -286,7 +286,7 @@ class Map extends React.Component {
           longitude={longitude}
           closeButton={false}
       >
-          <div >
+          <div className = "map-label" >
               {county}
           </div>
       </Popup>

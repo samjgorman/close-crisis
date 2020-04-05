@@ -1,8 +1,6 @@
 .header {
     background-color: #27292d;
-    display: grid;
-    grid-template-columns: [firstC] 33% [secondC] 33% [thirdC] 33%;
-    grid-template-rows: [firstR] 100%;
+   
     align-items: center;
 }
 
@@ -14,7 +12,7 @@
 .grid-logo{
     display: flex;
     flex-direction: row;
-    padding-left: 10vw;
+    padding-left: 5%;
 }
 
 .logo-title {
@@ -45,7 +43,6 @@
 
 
 .Menu-button {
-    grid-area: thirdC/thirdC/firstR/firstR;
     background-color: Transparent;
     background-repeat: no-repeat;
     border: none;
@@ -61,5 +58,18 @@
     .header {
         position: sticky !important;
         top: 0px; 
+        display: grid;
+        grid-template-columns: [firstC] 33% [secondC] 33% [thirdC] 33%;
+        grid-template-rows: [firstR] 100%;
+    }
+
+    .Menu-button{
+        grid-area: thirdC/thirdC/firstR/firstR;
+    }
+
+    .grid-logo{
+        padding-left: 10vw;
     }
   }
+
+ 

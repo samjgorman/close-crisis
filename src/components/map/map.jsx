@@ -16,7 +16,7 @@ class Map extends React.Component {
         latitude: 36.7783, //° N, 119.4179° Wthis.props.latitude, //default for LA
         longitude: -119.4179, //this.props.longitude, //default for LA
         width: "100%",
-        height: "50em",
+        height: "60em",
         zoom: 5,
         minZoom: 5,
         cases_layer: null, 
@@ -340,7 +340,7 @@ class Map extends React.Component {
          
 
 
-            <MapGL 
+            <MapGL className = "test-map"
                 {...viewport} 
                 mapboxApiAccessToken={mapbox_token} 
                 onViewportChange={(viewport) => { this.setViewport(viewport)}}
@@ -372,7 +372,7 @@ class Map extends React.Component {
                     trackUserLocation={true}
                 />
 
-                <div style={navStyle}>
+                <div className = "poteential" style={navStyle}>
                     <NavigationControl />
                 </div>
 

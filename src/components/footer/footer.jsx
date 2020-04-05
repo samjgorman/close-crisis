@@ -12,12 +12,13 @@ const Footer = ( {title, color} ) => {
         <div className = "footer-section-wrapper">
         
             <div className = "section-two"> 
-                <div className = "section-two-title">Case studies:</div>
+                <div className = "section-two-title">Created by scholars at UC Berkeley and Stanford.</div>
+
                   
             </div>
 
         </div>
-        <div className = "footer-text">Built by Sam with ❤️ in React</div>
+        <div className = "footer-text">sgorman at stanford.edu</div>
     </div>
   
   )

@@ -81,7 +81,7 @@ class App extends React.Component {
   getStyle(component_name) {
     let style = {}
     if(this.state.active_mobile_component === component_name) {
-      style.visitiblity = "visible";
+      style.visiblity = "visible";
       style.width = "100%";
 
     }else {
@@ -150,13 +150,14 @@ class App extends React.Component {
                       />
                     </div>
                     <div className="Map">
-                      <Map 
+                      <Map
                         selected_county={this.state.county}
                         latitude={this.state.latitude}
                         longitude={this.state.longitude}
                         mapOnClick={this.onCountySelection}/>
                     </div>
                   </div>
+                  
                 )
 
             }

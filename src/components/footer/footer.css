@@ -1,5 +1,11 @@
 
 .footer-wrapper{
     background-color: #27292d;
+    padding-left: 5vw;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+
+    font-family: 'DM Sans', sans-serif;
+    color: white;
 
 }

@@ -90,12 +90,16 @@ class App extends React.Component {
     if(this.state.active_mobile_component === component_name) {
       style.visiblity = "visible";
       style.width = "100%";
+      if(component_name === "menu") {
+        style.display = "block";
+      }
 
     }else {
       style.visibility = "hidden";
       style.width= "0%";
 
       if(component_name === "menu") {
+        style.display = "none"
         style.width= "0%";
         style.height = "0%";
       }

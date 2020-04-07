@@ -33,6 +33,7 @@ class StatisticsView extends React.Component {
       new_cases: "Loading", 
       new_deaths: "Loading", 
       articles: [], 
+      last_updated: "Loading",
       newsLoaded: false
 
     }, () => {
@@ -42,13 +43,6 @@ class StatisticsView extends React.Component {
       }
       axios.get(endpoint).then(
         (response) => {
-          console.log("Below is the response for: " + county)
-          console.log(response.data)
-          //index 1 means newly rendered component
-          //scroll to top on update
-          //document.getElementsByClassName('County-info')[1].scrollTo(0, 0) 
-
-
               this.setState({
                 county: response.data.county, 
                 cases: response.data.cases, 
@@ -56,8 +50,13 @@ class StatisticsView extends React.Component {
                 new_cases: response.data.new_cases, 
                 new_deaths: response.data.new_deaths, 
                 articles: response.data.articles,
+                last_updated: response.data.last_updated,
                 newsLoaded: true
               })
+
+              if(this.props.updateLastUpdatedInParent !== undefined && this.props.updateLastUpdatedInParent !== null) {
+                this.props.updateLastUpdatedInParent(response.data.last_updated);
+              }
               if(this.props.updateArticlesInParent !== undefined && this.props.updateArticlesInParent !== null) {
                 this.props.updateArticlesInParent(response.data.articles);
               }

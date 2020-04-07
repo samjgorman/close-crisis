@@ -16,12 +16,20 @@ class CountyInfo extends React.Component {
       deaths: null, 
       new_cases: null, 
       new_deaths: null, 
-      articles: []
+      articles: [],
+      last_updated: null
     };
 
     this.updateArticlesInParent = (articles) => {
       this.setState({
         articles: articles
+      })
+    }
+
+    this.updateLastUpdatedInParent = (last_updated) => {
+      console.log(last_updated);
+      this.setState({
+        last_updated: last_updated
       })
     }
   }
@@ -94,12 +102,13 @@ class CountyInfo extends React.Component {
             </div>
         </div>
         <div className="COVID-19-changes-in-your-area">
-            COVID-19 changes in your area
+            COVID-19 changes for {this.state.last_updated}
         </div>
           <StatisticsView 
             county={this.state.county}
             updateArticlesInParent={this.updateArticlesInParent}
             endpoint={this.props.endpoint}
+            updateLastUpdatedInParent={this.updateLastUpdatedInParent}
           />
           <div className="News-feed">
             <div className="Local-updates-for-Los-Angeles-Orange-County">

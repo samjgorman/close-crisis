@@ -9,6 +9,8 @@ import MobileNav from './components/mobileNav/mobileNav.jsx';
 import MobileMenu from './components/mobileMenu/mobileMenu.jsx';
 import MediaQuery from "react-media";
 import { Router, Route } from 'react-router-dom';
+import { Mixpanel } from './mixpanel';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +26,7 @@ class App extends React.Component {
       //arbitrary
     };
 
+    //We call this in order to track when a user loads the page
     
     this.changeActiveMobileComponent = (icon_name) => {
       console.log(icon_name);
@@ -83,6 +86,11 @@ class App extends React.Component {
     };
 
   }
+
+  componentDidMount(){
+    Mixpanel.track('App load');
+  }
+
 
 
   getStyle(component_name) {

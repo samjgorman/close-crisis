@@ -5,6 +5,7 @@ import Placeholder from "../placeholder/placeholder.jsx"
 
 import axios from 'axios';
 import ContentLoader, { List } from 'react-content-loader'
+import { Mixpanel } from '../../mixpanel';
 
 
 class CountyInfo extends React.Component {
@@ -19,6 +20,9 @@ class CountyInfo extends React.Component {
       articles: [],
       last_updated: null
     };
+
+    this.newsHandler = this.newsHandler.bind(this);
+
 
     this.updateArticlesInParent = (articles) => {
       this.setState({
@@ -56,25 +60,35 @@ class CountyInfo extends React.Component {
     }
   }
 
+ 
+  //This handler tracks newsArticle clicks for mixpanel
+  newsHandler(article){
+    Mixpanel.track('newsClick');
+    // console.log(article);
+   
+}
+
   displayNewsFeed() {
     if(!Array.isArray(this.state.articles)){
       return this.state.articles
     }
-    return  this.state.articles.sort( //sort the newsfeed articles by date, earliest to latest
+    var sorted = this.state.articles.sort( //sort the newsfeed articles by date, earliest to latest
       function(article1, article2) {
         return new Date(article1.timestamp) - new Date(article2.timestamp);
-      }
-    ).map(
-      function(article) {
+      })
+
+    return sorted.map((article) =>{
         return (
           <div className="Article-element"> 
             <div className="Timestamp">
               {article.mins_ago}
             </div>
             <div className="Title">
-              <a target="_blank" href={article.article_url} className="Title">
+              {/* <button className="clickWrapper" onClick = {() => this.newsHandler(article)}>  */}
+              <a target="_blank" href={article.article_url} onClick = {() => this.newsHandler(article)} className="Title">
                 {article.article_title}
               </a>
+              {/* </button> */}
             </div>
             <div className="Sourcename">
               {article.newspaper_name}
@@ -82,6 +96,7 @@ class CountyInfo extends React.Component {
             
           </div>
         )
+        
       }
     )
   }

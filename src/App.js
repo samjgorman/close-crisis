@@ -27,7 +27,6 @@ class App extends React.Component {
     };
 
     //We call this in order to track when a user loads the page
-    
     this.changeActiveMobileComponent = (icon_name) => {
       console.log(icon_name);
       this.setState(

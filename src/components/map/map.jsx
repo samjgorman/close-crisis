@@ -6,6 +6,8 @@ import StatisticsView from '../statisticsView/statisticsView.js';
 import MediaQuery from 'react-media';
 import { Link } from 'react-router-dom';
 import './map.css';
+import { Mixpanel } from '../../mixpanel';
+
 
 class Map extends React.Component {
   constructor(props) {
@@ -228,9 +230,10 @@ class Map extends React.Component {
           }
       )
   }
-
+  //Added Mixpanel tracking code to track countyClicks, unsure if strictly desktop
   onClickCounty(event) {
     event.preventDefault();
+    Mixpanel.track('countyClick')
     let feature = event.features[0];
     if(feature === undefined || feature.source === undefined) {
         return;

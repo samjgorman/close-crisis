@@ -155,7 +155,7 @@ class StatisticsView extends React.Component {
 
 
         <div className="Showing-Department-of-Public-Health-data">
-            Showing Department of Public Health data
+            Data from county Dept. of Public Health
         </div>
         
         </div>

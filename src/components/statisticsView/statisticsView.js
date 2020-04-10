@@ -60,6 +60,15 @@ class StatisticsView extends React.Component {
               if(this.props.updateArticlesInParent !== undefined && this.props.updateArticlesInParent !== null) {
                 this.props.updateArticlesInParent(response.data.articles);
               }
+              var newCases = this.state.new_cases;
+              console.log(newCases);
+               if (this.state.new_cases == 0 || this.state.newCases == 0){
+                 console.log("i run");
+                 this.setState({
+                   new_cases: "Awaiting update",
+                   new_deaths:"Awaiting update"
+                 })
+               }
         }
       ).catch(
         (err) => {
@@ -75,6 +84,7 @@ class StatisticsView extends React.Component {
     /*
       replace with default county
     */
+    
    if(this.props.cases !== undefined && this.props.cases !== null) {
     this.setState({
       county: this.props.county, 
@@ -83,10 +93,12 @@ class StatisticsView extends React.Component {
       new_cases: this.props.new_cases,
       new_deaths: this.props.new_deaths
     });
+
+    
     return;
    }
    this.updateCountyInfo(this.props.county);
-   
+  
 
   }
 

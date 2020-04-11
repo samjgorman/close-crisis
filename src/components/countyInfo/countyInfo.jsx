@@ -117,7 +117,7 @@ class CountyInfo extends React.Component {
             </div>
         </div>
         <div className="COVID-19-changes-in-your-area">
-            COVID-19 cases for {this.state.last_updated}
+            COVID-19 cases as of {this.state.last_updated}
         </div>
           <StatisticsView 
             county={this.state.county}

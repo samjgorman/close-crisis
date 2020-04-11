@@ -51,6 +51,7 @@ class StatisticsView extends React.Component {
                 new_deaths: response.data.new_deaths, 
                 articles: response.data.articles,
                 last_updated: response.data.last_updated,
+                source: response.data.source_link,
                 newsLoaded: true
               })
 
@@ -61,9 +62,7 @@ class StatisticsView extends React.Component {
                 this.props.updateArticlesInParent(response.data.articles);
               }
               var newCases = this.state.new_cases;
-              console.log(newCases);
                if (this.state.new_cases == 0 || this.state.newCases == 0){
-                 console.log("i run");
                  this.setState({
                    new_cases: "Awaiting update",
                    new_deaths:"Awaiting update"
@@ -72,7 +71,7 @@ class StatisticsView extends React.Component {
         }
       ).catch(
         (err) => {
-          console.log("An erorr occurred for: " + county)
+          console.log("An error occurred for: " + county)
           console.log(err);
         }
       )});
@@ -125,7 +124,7 @@ class StatisticsView extends React.Component {
                   {this.state.cases}
                   </div>
                   <div className="Labels">
-                  Confirmed
+                  Cases
                   </div>
 
                   <div className="-today">
@@ -138,7 +137,7 @@ class StatisticsView extends React.Component {
                   {this.state.deaths}
                   </div>
                   <div className="Labels">
-                  Deceased
+                  Deaths
                   </div>
                   <div className="-today">
                   <ion-icon  id="Arrow-icon" name="arrow-up-outline"></ion-icon>{this.state.new_deaths} today
@@ -154,9 +153,9 @@ class StatisticsView extends React.Component {
 
 
 
-        <div className="Showing-Department-of-Public-Health-data">
+        <a href={this.state.source} target="_blank" className="Showing-Department-of-Public-Health-data">
             Data from county Dept. of Public Health
-        </div>
+        </a>
         
         </div>
         

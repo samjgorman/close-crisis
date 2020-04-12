@@ -153,8 +153,8 @@ class StatisticsView extends React.Component {
 
 
 
-        <a href={this.state.source} target="_blank" className="Showing-Department-of-Public-Health-data">
-            Data from county Dept. of Public Health
+        <a href="https://coronavirus.jhu.edu/map.html" target="_blank" className="Showing-Department-of-Public-Health-data">
+            Data sourced from John Hopkins University
         </a>
         
         </div>

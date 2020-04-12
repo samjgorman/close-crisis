@@ -154,7 +154,7 @@ class StatisticsView extends React.Component {
 
 
         <a href="https://coronavirus.jhu.edu/map.html" target="_blank" className="Showing-Department-of-Public-Health-data">
-            Data sourced from John Hopkins University
+            Data sourced from Johns Hopkins University
         </a>
         
         </div>
